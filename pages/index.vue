@@ -1,0 +1,44 @@
+<template>
+
+  <blog-wrapper>
+    <div slot="middle">
+      <slide :banners="banners"></slide>
+      <blog-home-rec :articleList="articleList" />
+    </div>
+    <blog-right-aside slot="right"></blog-right-aside>
+  </blog-wrapper>
+</template>
+
+<script>
+  import { mapState } from 'vuex';
+  import BlogWrapper from '../components/wrapper/wrapper';
+  import BlogHomeRec from '../components/article-item/article-item';
+  import BlogAsideNav from '../components/aside-nav/aside-nav';
+  import BlogRightAside from '../components/right-aside/right-aside';
+  import Slide from '../components/slide/slide';
+  export default {
+    fetch({ store }) {
+      return Promise.all([
+        store.dispatch('common/getBanners'),
+        store.dispatch('article/article', {
+          article_type: 1
+        }),
+      ])
+    },
+    transition: 'slide',
+    computed: {
+      ...mapState({
+        articleList: state => state.article.articleList,
+        banners: state => state.common.banners,
+      })
+    },
+    components: {
+      BlogWrapper,
+      BlogHomeRec,
+      BlogAsideNav,
+      BlogRightAside,
+      Slide
+    }
+  }
+</script>
+

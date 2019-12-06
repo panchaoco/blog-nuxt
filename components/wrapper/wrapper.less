@@ -1,0 +1,94 @@
+.app-container {
+  //width: 1090px;
+  margin: 0 auto;
+  padding-top: .2rem;
+  display: flex;
+  .left-container {
+    flex: 0 0 200px;
+    width: 200px;
+  }
+  .nuxt-view {
+    flex: 1;
+    overflow: hidden;
+    margin: 0 .1rem;
+    min-height: 100%;
+  }
+  .right-container {
+    flex: 0 0 260px;
+    min-height: 600px;
+    padding-bottom: 20px;
+  }
+}
+.wrapper-section {
+  min-height: calc(100vh - 250px);
+}
+
+//.app-wrapper {
+//  flex: 1;
+//}
+@media screen and (max-width: 1089px) {
+  .app-wrapper {
+    margin-left: 0;
+  }
+}
+.middle-container {
+  //overflow-y: hidden;
+  flex: 1;
+  width: 610px;
+  margin-left: .1rem;
+  background-color: rgba(238, 238, 238, 0.6);
+  position: relative;
+  z-index: 1;
+  padding-bottom: 40px;
+  //opacity: 0;
+  transform-origin: left;
+  box-sizing: border-box;
+  &.animate {
+    //animation: main .4s ease-in-out forwards;
+  }
+}
+@keyframes main {
+  0% {
+    transform: translate3d(0, 0, 0) scale3d(.4, 1, 1);
+    opacity: 0;
+    filter: blur(6px);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+#app-mobile {
+  .app-wrapper {
+    margin: 0;
+    //padding: 0 0.18rem;
+  }
+}
+
+
+
+@keyframes movew {
+  0% {
+    transform: translateX(120px) scale3d(0.6, 1, 1);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px) scale3d(1, 1, 1);
+    opacity: 1;
+  }
+}
+
+@keyframes noScale {
+  0% {
+    transform: translate3d(0, 0, 0) scale3d(.4, 1, 1);
+    opacity: 0;
+    filter: blur(6px);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
