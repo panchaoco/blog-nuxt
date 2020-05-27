@@ -1,147 +1,41 @@
 <template>
   <blog-wrapper>
-    <div class="video-list-wrapper" slot="middle">
-<!--      <div class="pic">-->
-<!--        <img src="../../assets/images/fm.jpeg" alt="">-->
-<!--      </div>-->
-<!--      <div class="video">-->
-<!--        <h4 class="video-title">Flutter 入门教学视频（一）</h4>-->
-<!--        <video controls>-->
-<!--          <source src="../../assets/video/lyf.mp4" />-->
-<!--        </video>-->
-
-<!--      </div>-->
-<!--      <div class="points">-->
-<!--        <div class="point-item">-->
-<!--          <span>评论</span>-->
-<!--        </div>-->
-<!--        <div class="point-item">-->
-<!--          <span></span>-->
-<!--        </div>-->
-<!--        <div class="point-item">-->
-<!--          <span>评论</span>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="desc">-->
-<!--        <h4 class="desc-title">说在前面的话</h4>-->
-<!--        <p>Flutter是谷歌的移动UI框架，可以快速在iOS和Android上构建高质量的原生用户界面。 Flutter可以与现有的代码一起工作。在全世界，Flutter正在被越来越多的开发者和组织使用，并且Flutter是完全免费、开源的。</p>-->
-<!--      </div>-->
-
-      <div class="video-pic-item" v-for="(item, index) in videoList" :key="index">
-        <nuxt-link :to="`/playervideo/${item.id}`" target="_blank">
-          <div class="pic">
-            <img :src="item.img_src" alt="">
-            <div class="block">
-              <div class="play-icon">
-                <Icon type="md-play" />
-              </div>
-            </div>
-          </div>
-        </nuxt-link>
-        <div class="info">
-          <h4 class="title">{{item.title}}</h4>
-          <div class="count">
-            <div class="item">
-              <Icon class="up" type="md-thumbs-up" size="16" />
-              <span>{{item.thumbs_up_count}}</span>
-            </div>
-            <div class="item">
-              <Icon size="18" type="md-eye"/>
-              <span>{{item.look_count}}</span>
-            </div>
-            <div class="item">
-              <Icon type="md-chatbubbles" size="16" />
-              <span>66</span>
-              <span>评论</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <div slot="middle">
+      <blog-home-rec :articleList="videoList" />
     </div>
+    <blog-right-aside slot="right"></blog-right-aside>
   </blog-wrapper>
 </template>
 
 <script>
   import BlogWrapper from '../../components/wrapper/wrapper';
+  import BlogHomeRec from '../../components/article-item/article-item';
+  import BlogRightAside from '../../components/right-aside/right-aside';
   import { mapState } from 'vuex';
   export default {
     name: 'Video',
     transition: 'move',
     fetch({ store }) {
       return Promise.all([
-        store.dispatch('video/getVideoList'),
+        store.dispatch('article/article', {
+          is_video: 1
+        }),
       ])
     },
     computed: {
       ...mapState({
-        videoList: state => state.video.videoList,
+        videoList: state => state.article.articleList,
       })
     },
     data() {
       return {
-        videoPicList: [
-          {
-            title: 'Flutter入门教学视频（一）',
-            look_count: 124,
-            thumbs_up: 544,
-            comment: 66,
-            pic: require('../../assets/images/pic/1.jpg')
-          },
-          {
-            title: 'Flutter入门教学视频（一）',
-            look_count: 124,
-            thumbs_up: 544,
-            comment: 66,
-            pic: require('../../assets/images/pic/2.jpeg')
-          },
-          {
-            title: 'Flutter入门教学视频（一）',
-            look_count: 124,
-            thumbs_up: 544,
-            comment: 66,
-            pic: require('../../assets/images/pic/3.jpg')
-          },
-          {
-            title: 'Flutter入门教学视频（一）',
-            look_count: 124,
-            thumbs_up: 544,
-            comment: 66,
-            pic: require('../../assets/images/pic/4.jpg')
-          },
-          {
-            title: 'Flutter入门教学视频（一）',
-            look_count: 124,
-            thumbs_up: 544,
-            comment: 66,
-            pic: require('../../assets/images/pic/5.jpg')
-          },
-          {
-            title: 'Flutter入门教学视频（一）',
-            look_count: 124,
-            thumbs_up: 544,
-            comment: 66,
-            pic: require('../../assets/images/pic/6.jpg')
-          },
-          {
-            title: 'Flutter入门教学视频（一）',
-            look_count: 124,
-            thumbs_up: 544,
-            comment: 66,
-            pic: require('../../assets/images/pic/7.jpg')
-          },
-          {
-            title: 'Flutter入门教学视频（一）',
-            look_count: 124,
-            thumbs_up: 544,
-            comment: 66,
-            pic: require('../../assets/images/pic/8.jpg')
-          },
-        ]
+
       }
     },
     components: {
-      BlogWrapper
+      BlogWrapper,
+      BlogHomeRec,
+      BlogRightAside
     }
   }
 </script>

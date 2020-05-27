@@ -36,6 +36,7 @@ export default {
   */
   plugins: [
     { src: '~/plugins/swiper', mode: 'client' },
+    { src: '~plugins/jquery-3.5.0.min.js', mode: 'client', ssr: false },
     { src: '~/plugins/vue-components', mode: 'client' },
     '@/plugins/iview',
     '@/plugins/vue-map',

@@ -92,6 +92,11 @@ export const actions = {
     });
     commit('updateComment', res.data || [])
     return res;
+  },
+  async getResume({ commit, state }, payload) {
+    const res = await Axios('/v1/api/get_resume');
+    console.log('res', res)
+    return res
   }
 }
 

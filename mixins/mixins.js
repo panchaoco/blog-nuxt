@@ -1,7 +1,7 @@
 import { mapState } from 'vuex';
 
 export default {
-  fetch({ store, params }) {
+  fetch({ store, params, query }) {
     return Promise.all([
       store.dispatch('article/articleDetail', params),
       store.dispatch('article/getComments', {
@@ -11,7 +11,12 @@ export default {
   },
   computed: {
     ...mapState({
-      article: state => state.article.articleDetail,
+      article: function(state) {
+        if (this.$route.query.type === '3') {
+          return state.video.videoDetail
+        }
+        return state.article.articleDetail
+      },
       commentList: state => state.article.commentList,
     })
   },

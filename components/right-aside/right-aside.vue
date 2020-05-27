@@ -25,10 +25,13 @@
     <div class="category">
       <div class="tags">
         <Icon type="logo-instagram" size="18" />
-        <span>TAG</span>
+        <span>标签</span>
       </div>
       <div class="cate-content">
-        <span v-for="item in categoryList" :key="item.id">{{item.name}}</span>
+        <div class="span" v-for="item in allCategory" :key="item.text">
+          <Icon size="18" :type="item.type"></Icon>
+          <span>{{item.text}}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -51,7 +54,42 @@
           seconds: ''
         },
         timer: null,
-        categoryData: []
+        categoryData: [],
+        allCategory: [
+          {
+            type: 'logo-angular',
+            text: 'Angular'
+          },
+          {
+            type: 'logo-android',
+            text: 'Android'
+          },
+          {
+            type: 'logo-javascript',
+            text: 'JS'
+          },
+          {
+            type: 'logo-sass',
+            text: 'Sass'
+          },{
+            type: 'logo-python',
+            text: 'Python'
+          },{
+            type: 'logo-nodejs',
+            text: 'NodeJS'
+          },
+          {
+            type: 'logo-markdown',
+            text: 'Markdown'
+          },
+          {
+            type: 'logo-html5',
+            text: 'HTML5'
+          },{
+            type: 'logo-css3',
+            text: 'CSS3'
+          },
+        ]
       }
     },
     computed: {

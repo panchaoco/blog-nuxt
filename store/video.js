@@ -18,11 +18,8 @@ export const mutations =  {
 
 export const actions = {
   async getVideoList({ commit, state }, payload) {
-    const res = await Axios('/v1/api/articles', {
+    const res = await Axios('/v1/api/course', {
       method: 'GET',
-      params: {
-        article_type: 2
-      }
     });
     commit('updateVideoList', res.data || []);
     return res

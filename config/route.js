@@ -7,7 +7,7 @@ const routes = [
     name: 'Home'
   },
   {
-    title: '教学视频',
+    title: '窗外的世界',
     icon: 'md-videocam',
     path: '/video',
     name: 'Video'

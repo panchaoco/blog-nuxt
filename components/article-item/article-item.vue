@@ -16,7 +16,7 @@
             <img :src="item.img_src || require('../../assets/images/default.jpeg')" alt="">
             <div class="content">
               <div class="top">
-                <nuxt-link :to="`/article/${item.id}`"><h1>{{item.title}}</h1></nuxt-link>
+                <nuxt-link :to="`/article/${item.id}?type=${item.type || ''}`"><h1>{{item.title}}</h1></nuxt-link>
                 <p>{{item.desc}}</p>
               </div>
               <div class="profile">

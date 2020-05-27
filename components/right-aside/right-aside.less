@@ -1,8 +1,8 @@
 .aside-recommend {
   //position: fixed;
   //top: 100px;
-  flex: 0 0 260px;
-  width: 260px;
+  flex: 0 0 240px;
+  width: 240px;
   margin-left: .1rem;
   .blog-user {
     background-color: #fff;
@@ -143,15 +143,21 @@
 }
 .cate-content {
   padding: 10px;
-  span {
-    display: inline-block;
-    padding: 4.5px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  .span {
+    display: flex;
+    padding: 4.5px 15px;
     margin-right: 10px;
-    font-size: 12px;
+    font-size: 12.5px;
     background-color: #eaeaea;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     transition: background-color .2s;
     cursor: pointer;
+    align-items: center;
+    span {
+      margin-left: 6px;
+    }
     &:hover {
       background-color: #aeaeae;
     }
