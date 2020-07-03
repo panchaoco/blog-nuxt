@@ -10,7 +10,7 @@
           </div>
         </div>
       </div>
-      <div class="swiper-pagination" slot="pagination"></div>
+      <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets" />
       <!--<div class="swiper-button-prev" slot="button-prev"></div>-->
       <!--<div class="swiper-button-next" slot="button-next"></div>-->
     </div>
@@ -38,7 +38,7 @@
           mousewheel: true,
           observeParents: true,
           // 禁用 PC 拖动手指样式
-          grabCursor: false,
+          grabCursor: true,
           // 警用 PC 拖动
           simulateTouch : false,
           preloadImages: false,
@@ -55,6 +55,22 @@
     }
   }
 </script>
+
+<style lang="less">
+  .music-slider {
+    .swiper-pagination {
+      .swiper-pagination-bullet {
+        &.swiper-pagination-bullet-active {
+          width: 20px;
+          border-radius: 10px;
+          background-color: #ffffff;
+          transition: all .2s;
+          transform-origin: left;
+        }
+      }
+    }
+  }
+</style>
 
 <style lang="less" scoped>
   .slide-container {

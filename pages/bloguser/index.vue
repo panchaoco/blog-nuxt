@@ -5,12 +5,8 @@
       <p class="item"><em></em><span>工作：全栈（努力）开发工程师</span></p>
       <p class="item"><em></em><span>擅长：Python、JavaScript、Vue、React、Fullter、Django等</span></p>
       <p class="item"><em></em><span>联系我：dxpanchao@gmail.com &nbsp;&nbsp; 15520870525@163.com</span></p>
-      <p class="item desc"><Icon size="16" type="md-code" /><span>致力于高效、可读性、可维护性的组件化代码实现</span></p>
-      <no-ssr>
-        <h4 class="map-title">我的位置</h4>
-        <el-amap vid="amapDemo"  :center="center" :map-manager="amapManager" :zoom="zoom" :events="events" class="vue-map">
-        </el-amap>
-      </no-ssr>
+<!--      <p class="item desc"><Icon size="16" type="md-code" /><span>致力于高效、可读性、可维护性的组件化代码实现</span></p>-->
+
       <div class="resume-wrapper">
         <div class="info">
           <div class="item">
@@ -32,6 +28,12 @@
         </div>
         <div class="resume" v-html="resume"></div>
       </div>
+
+      <no-ssr>
+        <h4 class="map-title">我的位置</h4>
+        <el-amap vid="amapDemo"  :center="center" :map-manager="amapManager" :zoom="zoom" :events="events" class="vue-map">
+        </el-amap>
+      </no-ssr>
     </div>
 
   </wrapper>
@@ -135,6 +137,7 @@
 </style>
 <style lang="less">
   .resume-wrapper {
+    padding-left: 5px;
     .info {
       margin-top: 20px;
       margin-bottom: 20px;
@@ -152,6 +155,9 @@
       * {
         margin: 15px 0;
 
+      }
+      p {
+        line-height: 2em;
       }
     }
     ol {

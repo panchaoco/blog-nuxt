@@ -1,4 +1,4 @@
-const apiHost = 'http://192.168.110.9:7002'
+const apiHost = 'http://api.angeleic.com'
 
 export {
   apiHost

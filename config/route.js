@@ -1,13 +1,13 @@
 
 const routes = [
   {
-    title: '猿人世界',
+    title: '技术圈',
     icon: 'md-code',
     path: '/',
     name: 'Home'
   },
   {
-    title: '窗外的世界',
+    title: '满眼桃花',
     icon: 'md-videocam',
     path: '/video',
     name: 'Video'

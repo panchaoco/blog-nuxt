@@ -20,7 +20,7 @@
         </div>
         <div class="info-wrapper">
           <div class="info" v-if="article">
-            <p>本文于{{article.update_time}}发表于 <strong>{{article.category_type}}</strong> 栏目下</p>
+            <p>本文于{{article.updated_at}}发表于 <strong>{{article.category_type}}</strong> 栏目下</p>
             <p>标签：{{article.category_type}}</p>
             <p>若需转载请注明出处：<a :href="href">{{ href }}</a> </p>
           </div>

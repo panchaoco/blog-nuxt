@@ -13,7 +13,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'dns-prefetch', href: '//at.alicdn.com/t/font_1114196_nhfik0nl91q.css' },
+      { rel: 'stylesheet', href: '//at.alicdn.com/t/font_1114196_0tn8byeij26p.css' },
     ]
   },
   /*
@@ -25,6 +25,7 @@ export default {
   */
   css: [
     'iview/dist/styles/iview.css',
+    'swiper/css/swiper.css',
     // {src: '~assets/iconfont/ionicons.less'},
     { src: '~assets/less/reset.less', lang: 'less' },
     { src: '~assets/less/common.less', lang: 'less' },

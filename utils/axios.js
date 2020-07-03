@@ -47,6 +47,9 @@ const Axios = async (url, options = {}) => {
     res = await instance.patch(api, body)
   }
   return new Promise((resolve, reject) => {
+    if (url === '/v1/api/category') {
+      console.log(res)
+    }
     if (res && res.status >= 200 && res.status < 300) {
       return resolve(res.data)
     } else {

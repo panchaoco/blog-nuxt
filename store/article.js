@@ -6,7 +6,6 @@ export const state = () => {
     articleDetail: null,
     articleNode: [],
     commentList: [],
-    categoryList: [],
     list: {
       isFetching: false,
     }
@@ -26,12 +25,9 @@ export const mutations = {
   updateComment(state, comment) {
     state.commentList = handleComment(comment);
   },
-  updateCategory(state, category) {
-    state.categoryList = category;
-  },
   updateListFetching(state, fetching) {
     state.list.isFetching = fetching;
-  }
+  },
 }
 
 export const actions = {
@@ -45,19 +41,14 @@ export const actions = {
     commit('updateListFetching', true);
     return res
   },
-  async category({ commit, state }, payload) {
-    const res = await Axios('/v1/api/category', payload);
-    commit('updateCategory', res.data || [])
-    return res
-  },
-  async articleDetail({ commit, state, dispatch}, payload) {
+
+  async articleDetail({ commit, state, dispatch }, payload) {
     const res = await Axios('/v1/api/articles', {
       method: 'GET',
       params: payload
     });
     const lookCount = res.data.look_count || 0;
     commit('updateArticleDetail', res.data);
-    console.log('payloadid', payload)
     dispatch('updateArticle', {
       ...payload,
       look_count: lookCount + 1

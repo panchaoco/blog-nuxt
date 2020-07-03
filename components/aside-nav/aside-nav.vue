@@ -1,51 +1,26 @@
 <template>
   <section class="left-aside" key="aside-nav">
     <ul>
-      <li v-for="(item, index) in leftNav" :key="index"
+      <li v-for="(item, index) in categoryList" :key="index"
           :class="{active: current === index && isLoad}"
 
       >
         <nuxt-link class="nav-link" :to="`${item.path}?id=${index}`">
-          <Icon :type="item.icon"></Icon>
-          <span :class="{hot: !!item.isHot}">{{item.title}}</span>
+          <span class="iconfont" :class="`${item.icon}`" v-if="!item.ivu_icon"></span>
+          <span class="ivu-icon" :class="`ivu-icon-${item.ivu_icon}`" v-else></span>
+          <span :class="{hot: !!item.isHot}">{{item.name}}</span>
           <transition name="line">
             <strong class="line" v-show="current === index && isLoad "></strong>
           </transition>
         </nuxt-link>
       </li>
     </ul>
-    <div class="blog-user" v-if="info">
-      <a href="./img/user.jpg" download>
-        <img class="user-img" width="100" height="" src="./img/user.jpg" alt="">
-      </a>
-      <div class="info ">
-        <span class="username">小二</span>
-      </div>
-      <div class="cate">
-        <div class="item">
-          <span class="name">猿人</span>
-          <span class="count">{{info.code_len}}</span>
-        </div>
-        <div class="item">
-          <span class="name">心情</span>
-          <span class="count">{{info.essay_len}}</span>
-        </div>
-        <div class="item">
-          <span class="name">分类</span>
-          <span class="count">{{info.category_len}}</span>
-        </div>
-      </div>
-      <div class="links">
-        <a href="https://github.com/pc1995" title="github" target="_blank">
-          <Icon size="20" type="logo-github" />
-        </a>
-      </div>
-    </div>
+
   </section>
 </template>
 
 <script>
-  import {mapMutations} from 'vuex'
+  import {mapMutations, mapState} from 'vuex'
   import { routes } from '../../config/route'
   export default {
     name: "LeftAside",
@@ -59,6 +34,11 @@
       }
     },
     created() {
+    },
+    computed: {
+      ...mapState({
+        categoryList: state => state.category.categoryList,
+      })
     },
     mounted() {
       if (process.browser) {

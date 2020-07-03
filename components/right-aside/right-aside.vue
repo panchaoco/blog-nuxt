@@ -28,9 +28,9 @@
         <span>标签</span>
       </div>
       <div class="cate-content">
-        <div class="span" v-for="item in allCategory" :key="item.text">
-          <Icon size="18" :type="item.type"></Icon>
-          <span>{{item.text}}</span>
+        <div class="span" v-for="item in tagList" :key="item.icon">
+          <span class="iconfont" :class="item.icon"></span>
+          <span>{{item.name}}</span>
         </div>
       </div>
     </div>
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+  import axios from '../../utils/axios'
   import { mapState } from 'vuex';
   export default {
     name: "RightAside",
@@ -56,46 +57,14 @@
         timer: null,
         categoryData: [],
         allCategory: [
-          {
-            type: 'logo-angular',
-            text: 'Angular'
-          },
-          {
-            type: 'logo-android',
-            text: 'Android'
-          },
-          {
-            type: 'logo-javascript',
-            text: 'JS'
-          },
-          {
-            type: 'logo-sass',
-            text: 'Sass'
-          },{
-            type: 'logo-python',
-            text: 'Python'
-          },{
-            type: 'logo-nodejs',
-            text: 'NodeJS'
-          },
-          {
-            type: 'logo-markdown',
-            text: 'Markdown'
-          },
-          {
-            type: 'logo-html5',
-            text: 'HTML5'
-          },{
-            type: 'logo-css3',
-            text: 'CSS3'
-          },
+
         ]
       }
     },
     computed: {
       ...mapState({
         articleList: state => state.article.articleList,
-        categoryList: state => state.article.categoryList
+        tagList: state => state.tag.tagList
       })
     },
     created() {
