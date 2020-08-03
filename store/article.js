@@ -6,6 +6,7 @@ export const state = () => {
     articleDetail: null,
     articleNode: [],
     commentList: [],
+    hotArticleList: [],
     list: {
       isFetching: false,
     }
@@ -28,6 +29,9 @@ export const mutations = {
   updateListFetching(state, fetching) {
     state.list.isFetching = fetching;
   },
+  updateHotArticleList(state, list) {
+    state.hotArticleList = list
+  }
 }
 
 export const actions = {
@@ -86,8 +90,20 @@ export const actions = {
   },
   async getResume({ commit, state }, payload) {
     const res = await Axios('/v1/api/get_resume');
-    console.log('res', res)
     return res
+  },
+  async getHotArticleList({ commit, state }, payload) {
+    const res = await Axios('/v1/api/articles', {
+      method: 'GET',
+      params: {
+        page: 1,
+        page_size: 10,
+        is_hot: 1
+      }
+    });
+    if (res && res.state === 0) {
+      commit('updateHotArticleList', res.data)
+    }
   }
 }
 

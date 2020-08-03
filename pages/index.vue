@@ -1,6 +1,6 @@
 <template>
 
-  <blog-wrapper>
+  <blog-wrapper :aside-nav="false">
     <div slot="middle">
       <slide :banners="banners"></slide>
       <blog-home-rec :articleList="articleList" />
@@ -21,7 +21,7 @@
       return Promise.all([
         store.dispatch('common/getBanners'),
         store.dispatch('article/article', {
-          article_type: 1
+          article_type: store.state.category.categoryList[0].id
         }),
       ])
     },

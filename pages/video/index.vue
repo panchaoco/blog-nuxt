@@ -1,5 +1,5 @@
 <template>
-  <blog-wrapper>
+  <blog-wrapper :aside-nav="false">
     <div slot="middle">
       <blog-home-rec :articleList="videoList" />
     </div>

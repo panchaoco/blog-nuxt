@@ -29,6 +29,26 @@
       }
     }
   }
+  .search-wrapper {
+    font-size: 14px;
+    position: relative;
+    padding: 2px;
+    background-color: #ddd;
+    transition: all .2s;
+    &:hover {
+      background-color: #aca8a8;
+    }
+    input {
+      height: 30px;
+      width: 100%;
+      padding-left: 10px;
+    }
+    .icon-search {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+  }
   .hot {
     background-color: #f1f1f1;
     border-radius: 3px;
@@ -77,6 +97,18 @@
             text-overflow: ellipsis;
             white-space: nowrap;
             max-width: 180px;
+          }
+        }
+        a {
+          transition: all .2s;
+          span {
+            transition: all .2s;
+          }
+          &:hover {
+            color: #333;
+            span:nth-child(2) {
+              padding-left: 2px;
+            }
           }
         }
         &:nth-child(1) {
@@ -138,7 +170,13 @@
   margin-top: 15px;
   background-color: #f8f8f8;
   .tags {
-    padding: 15px 12px 3px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    span {
+      display: block;
+      font-size: 14px;
+    }
   }
 }
 .cate-content {
@@ -147,7 +185,7 @@
   flex-wrap: wrap;
   .span {
     display: flex;
-    padding: 4.5px 15px;
+    height: 30px;
     margin-right: 10px;
     font-size: 12.5px;
     background-color: #d8d8d8;
@@ -155,8 +193,21 @@
     transition: background-color .2s;
     cursor: pointer;
     align-items: center;
+    padding-right: 10px;
+    font-family: SpecialSymbol, DINRegular, -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft YaHei", sans-serif;;
     span {
-      margin-left: 6px;
+      &.icon {
+        background-color: #e8e5e5;
+        height: 30px;
+        width: 30px;
+        line-height: 30px;
+        text-align: center;
+        font-size: 13px;
+      }
+      &.name {
+        padding: 0 8px;
+        font-size: 12px;
+      }
     }
     &:hover {
       background-color: #aeaeae;

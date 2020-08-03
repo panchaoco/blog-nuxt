@@ -1,5 +1,5 @@
 <template>
-  <BlogWrapper class="record-container">
+  <BlogWrapper :aside-nav="false" :aside-right="false" class="record-container">
     <div slot="middle">
       <ul class="record-content">
         <li class="record-item" v-for="(item, index) in articleNode" :key="index">

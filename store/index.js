@@ -6,6 +6,7 @@ export const actions = {
       }),
       store.dispatch('category/getCategory'),
       store.dispatch('tag/getTagList'),
+      store.dispatch('article/getHotArticleList'),
 
     ]
 

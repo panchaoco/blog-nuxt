@@ -3,6 +3,18 @@ const routes = [
   {
     title: '技术圈',
     icon: 'md-code',
+    path: '/group',
+    name: 'group'
+  },
+  {
+    title: '藏经阁',
+    icon: 'md-bookmarks',
+    path: '/record',
+    name: 'Record'
+  },
+  {
+    title: '技术圈',
+    icon: 'md-code',
     path: '/',
     name: 'Home'
   },
@@ -15,15 +27,10 @@ const routes = [
   {
     title: '生活、诗歌、文集',
     icon: 'logo-buffer',
-    path: '/anthology',
+    path: '/group',
     name: 'anthology'
   },
-  {
-    title: '藏经阁',
-    icon: 'md-bookmarks',
-    path: '/record',
-    name: 'Record'
-  },
+
   {
     title: '音乐馆',
     icon: 'md-musical-notes',
@@ -51,7 +58,7 @@ const routes = [
   {
     title: '一枝独秀',
     icon: 'md-ribbon',
-    path: '/flutter',
+    path: '/group',
     name: 'flutter',
     isHot: true
   },

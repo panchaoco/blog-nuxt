@@ -1,21 +1,33 @@
 <template>
   <div class="app-wrapper app-container">
-    <div class="left-container" v-if="$slots.left">
-      <slot name="left"></slot>
+    <div class="left-container" v-if="asideNav">
+      <blog-aside-nav :asideNav="asideNav" />
     </div>
     <div class="middle-container animate" v-if="$slots.middle">
       <slot name="middle"></slot>
     </div>
-    <div class="right-container" v-if="$slots.right">
-      <slot name="right"></slot>
+    <div class="right-container" v-if="asideRight">
+      <blog-right-aside :aisdeRight="asideRight" />
     </div>
   </div>
 </template>
 
 <script>
-  import {mapState} from 'vuex'
+  import { mapState } from 'vuex'
+  import BlogAsideNav from '../../components/aside-nav/aside-nav';
+  import BlogRightAside from '../../components/right-aside/right-aside';
   export default {
     name: "Wrapper",
+    props: {
+      asideRight: {
+        type: Boolean,
+        default: true
+      },
+      asideNav: {
+        type: Boolean,
+        default: true
+      }
+    },
     data() {
       return {
         hide: false
@@ -30,7 +42,8 @@
 
     },
     components: {
-
+      BlogAsideNav,
+      BlogRightAside
     }
   }
 </script>

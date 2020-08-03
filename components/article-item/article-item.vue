@@ -1,6 +1,6 @@
 <template>
   <div class="hot-container">
-<!--    <slide :banners="banners"></slide>-->
+    <!--    <slide :banners="banners"></slide>-->
     <div class="hot-content">
       <ul v-if="!isFetching">
         <li v-for="(item, index) in articleList" :key="index">
@@ -13,7 +13,9 @@
         <li v-for="(item, index) in articleList" :key="index">
           <div class="hot-item">
             <span class="tag" :class="{original: !!item.original}">{{ item.original ? '原创' : '转载' }}</span>
-            <img :src="item.img_src || require('../../assets/images/default.jpeg')" alt="">
+            <div class="img-box">
+              <img :src="item.img_src || require('../../assets/images/default.jpeg')" alt="">
+            </div>
             <div class="content">
               <div class="top">
                 <nuxt-link :to="`/article/${item.id}?type=${item.type || ''}`"><h1>{{item.title}}</h1></nuxt-link>
@@ -21,19 +23,19 @@
               </div>
               <div class="profile">
                 <div class="item up">
-                  <Icon size="18" type="md-eye"/>
+                  <span class="iconfont icon-read"></span>
                   <span>{{item.look_count}}</span>阅读
                 </div>
                 <div class="item time">
-                  <Icon type="ios-time" />&nbsp;
+                  <span class="iconfont icon-time"></span>
                   <span>{{item.updated_at | formatTime}}</span>
                 </div>
                 <div class="item">
-                  <Icon type="md-chatbubbles" />
+                  <span class="iconfont icon-comment"></span>
                   <span>{{item.comment_count}} 评论 </span>
                 </div>
                 <div class="item">
-                  <Icon type="md-thumbs-up" />
+                  <span class="iconfont icon-good"></span>
                   <span>{{item.thumbs_up_count}} 赞 </span>
                 </div>
               </div>
@@ -48,10 +50,11 @@
 </template>
 
 <script>
-  import {mapState, mapMutations} from 'vuex';
+  import { mapState, mapMutations } from 'vuex'
   import Slide from '../slide/slide'
+
   export default {
-    name: "article-item",
+    name: 'article-item',
     props: ['articleList'],
     transition: 'move-right',
     data() {
@@ -73,10 +76,10 @@
           // 禁用 PC 拖动手指样式
           grabCursor: false,
           // 警用 PC 拖动
-          simulateTouch : false,
+          simulateTouch: false,
           preloadImages: false,
           lazy: true
-        },
+        }
       }
     },
     computed: {
@@ -97,7 +100,7 @@
       getBanners() {
         this.$store.dispatch('common/getBanners', {
           method: 'GET',
-          body: {product_name: 'article'},
+          body: { product_name: 'article' }
         }).then(res => {
           if (res.state === 0) {
             this.slides = res.data
@@ -118,7 +121,7 @@
         const type = Number(this.$route.query.id)
         this.updateLeftClick(false)
         this.$router.push({
-          path: `/diary/article/${item.id}`,
+          path: `/diary/article/${item.id}`
         })
       }
     },

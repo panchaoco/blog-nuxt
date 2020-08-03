@@ -2,15 +2,15 @@
   <div class="submit-comment">
     <ul class="top">
       <li>
-        <span>昵称*</span>
+        <label>昵称*</label>
         <input v-model="commentData.nickname" type="text" />
       </li>
       <li>
-        <span>邮箱*</span>
+        <label>邮箱*</label>
         <input v-model="commentData.email" type="email" />
       </li>
       <li>
-        <span>网址</span>
+        <label>网址</label>
         <input v-model="commentData.link" type="url" />
       </li>
     </ul>
@@ -85,18 +85,20 @@
         display: flex;
         height: 26px;
         align-items: center;
-        box-sizing: border-box;
-        span {
+        box-sizing: content-box;
+        label {
           display: block;
           flex: 0 0 50px;
           border: 1px dotted #bfbfbf;
           height: 26px;
           line-height: 26px;
           text-align: center;
+          font-size: 12px;
         }
         input {
           background-color: #bcbcbc;
-          flex: 1;
+          flex: 0 0 143px;
+          width: 143px;
           height: 26px;
           padding-left: 10px;
         }
@@ -114,6 +116,7 @@
         background-color: #cfcfcf;
         padding: 10px;
         min-height: 160px;
+        resize: none;
       }
     }
     .comment-btn {

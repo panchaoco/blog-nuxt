@@ -2,15 +2,22 @@
   <section class="left-aside" key="aside-nav">
     <ul>
       <li v-for="(item, index) in categoryList" :key="index"
-          :class="{active: current === index && isLoad}"
-
+          :class="{active: item.path === $route.path}"
       >
-        <nuxt-link class="nav-link" :to="`${item.path}?id=${index}`">
+        <nuxt-link class="nav-link" v-if="item.path === '/group'" :to="`${item.path}/${item.id}`">
           <span class="iconfont" :class="`${item.icon}`" v-if="!item.ivu_icon"></span>
           <span class="ivu-icon" :class="`ivu-icon-${item.ivu_icon}`" v-else></span>
-          <span :class="{hot: !!item.isHot}">{{item.name}}</span>
+          <span class="nav-text" :class="{hot: !!item.isHot}">{{item.name}}</span>
           <transition name="line">
-            <strong class="line" v-show="current === index && isLoad "></strong>
+            <strong class="line" v-show="(item.id === Number($route.params.category) || item.path === $route.path) && isLoad "></strong>
+          </transition>
+        </nuxt-link>
+        <nuxt-link v-else class="nav-link" :to="`${item.path}`">
+          <span class="iconfont" :class="`${item.icon}`" v-if="!item.ivu_icon"></span>
+          <span class="ivu-icon" :class="`ivu-icon-${item.ivu_icon}`" v-else></span>
+          <span class="nav-text" :class="{hot: !!item.isHot}">{{item.name}}</span>
+          <transition name="line">
+            <strong class="line" v-show="(item.id === Number($route.params.category) || item.path === $route.path) && isLoad "></strong>
           </transition>
         </nuxt-link>
       </li>
@@ -76,7 +83,7 @@
         if (process.browser) {
           this.current = this.leftNav.findIndex(item => item.path === window.location.pathname)
         }
-      }
+      },
     }
   }
 </script>

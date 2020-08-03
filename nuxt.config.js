@@ -8,12 +8,12 @@ export default {
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      // { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '//at.alicdn.com/t/font_1114196_0tn8byeij26p.css' },
+      { rel: 'stylesheet', href: '//at.alicdn.com/t/font_1114196_klxt5he60d.css' },
     ]
   },
   /*
@@ -24,11 +24,10 @@ export default {
   ** Global CSS
   */
   css: [
-    'iview/dist/styles/iview.css',
     'swiper/css/swiper.css',
-    // {src: '~assets/iconfont/ionicons.less'},
-    { src: '~assets/less/reset.less', lang: 'less' },
-    { src: '~assets/less/common.less', lang: 'less' },
+    // {src: '~assets/iconfont/ionicons.styles'},
+    { src: '~assets/styles/reset.less', lang: 'less' },
+    { src: '~assets/styles/common.less', lang: 'less' },
     'highlight.js/styles/github.css',
     'mavon-editor/dist/css/index.css'
   ],
@@ -39,7 +38,6 @@ export default {
     { src: '~/plugins/swiper', mode: 'client' },
     { src: '~plugins/jquery-3.5.0.min.js', mode: 'client', ssr: false },
     { src: '~/plugins/vue-components', mode: 'client' },
-    '@/plugins/iview',
     '@/plugins/vue-map',
     '~/plugins/vue-lazyload'
   ],
@@ -72,6 +70,6 @@ export default {
     }
   },
   styleResources: {
-    less: './assets/less/reset.less',
+    less: './assets/styles/reset.less',
   },
 }

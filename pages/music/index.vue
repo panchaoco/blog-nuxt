@@ -53,8 +53,6 @@
   export default {
     name: "Music",
     transition(to, from) {
-      console.log('to', to);
-      console.log('from', from);
       return 'move'
     },
     data() {
@@ -155,7 +153,6 @@
       playMusic(item, index) {
         const playList = window.localStorage.getItem('playList')
         let json = playList ? JSON.parse(playList) : []
-        console.log('playList', playList)
         this.$store.commit('common/updateOpenPlayer', true)
         // const isHave = json.filter(d => d.albumid === item.data.albumid).length === 0
         // if (isHave) {

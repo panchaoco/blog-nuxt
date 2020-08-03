@@ -5,8 +5,7 @@
         <div class="logo">
           <h1>
             <nuxt-link to="/">
-              <img src="./img/1099.png" width="100" alt="">
-              <span>小&nbsp;&nbsp;&nbsp;二&nbsp;&nbsp;&nbsp;作&nbsp;&nbsp;&nbsp;坊</span>
+              <span>Public</span>
             </nuxt-link>
           </h1>
         </div>
@@ -17,12 +16,7 @@
             </li>
           </ul>
           <div class="search-input">
-            <Form @submit.native.prevent="searchSubmit">
-              <FormItem>
-                <Input v-model="searchValue" placeholder="搜索内容" />
-                <Icon class="md-search" type="md-search" />
-              </FormItem>
-            </Form>
+            <input v-model="searchValue" placeholder="搜索内容" />
           </div>
         </nav>
         <span class="app-d">
@@ -47,6 +41,7 @@
         ],
         navigation: [
           {name: '首页', path: '/', show: true},
+          {name: '话题', path: '/', show: true},
         ],
         searchValue: ''
       }

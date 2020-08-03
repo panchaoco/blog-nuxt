@@ -31,11 +31,6 @@
         padding: 0.06rem;
         transition: all .3s ease-in-out;
         cursor: pointer;
-        //.animateFun(moved);
-        //animation-fill-mode: forwards;
-        &:hover {
-          background-color: #dedede;
-        }
         .hot-item {
           display: flex;
           width: 100%;
@@ -52,15 +47,23 @@
             text-align: center;
             line-height: 20px;
             font-size: 12px;
+            transition: all .2s;
+            z-index: 11;
             &.original {
-              background-color: #28ad7d;
+              background-color: #13a973;
             }
           }
-          img {
+          .img-box {
             margin-right: 0.1rem;
-            flex: 0 0 1.8rem;
-            width: 1.8rem;
+            flex: 0 0 1.85rem;
+            width: 1.85rem;
             height: 1.28rem;
+            overflow: hidden;
+            img {
+              width: 1.85rem;
+              height: 1.28rem;
+              transition: all .35s;
+            }
           }
           .content {
             padding-top: 0.03rem;
@@ -73,7 +76,7 @@
                   font-size: 0.15rem;
                   font-weight: 600;
                   padding-bottom: 0.05rem;
-                  color: #555;
+                  color: #666;
                   transition: all .3s linear;
                   &:hover {
                     text-decoration: underline;
@@ -108,11 +111,7 @@
                 span {
                   margin: 0 0.03rem;
                 }
-                &.up {
-                  .iconfont {
-                    color: #2d8cf0;
-                  }
-                }
+                color: #666666;
                 &:last-child {
                   margin-right: 0;
                 }
@@ -120,7 +119,20 @@
             }
           }
         }
-
+        &:hover {
+          background-color: #dedede;
+          .hot-item {
+            .tag {
+              background-color: #ff1b1b;
+              &.original {
+                background-color: #0cd28a;
+              }
+            }
+            img {
+              transform: scale(1.1) rotate(10deg);
+            }
+          }
+        }
       }
     }
   }

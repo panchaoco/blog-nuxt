@@ -1,8 +1,9 @@
 <template>
   <div class="diary-article">
-    <blog-wrapper>
+    <blog-wrapper :aside-nav="false">
       <div slot="middle" class="diary-con">
-        <!--<div class="origin" :class="{self: !!article && article.original}"><span>原创</span></div>-->
+        <div class="origin" v-if="!!article && article.original" :class="{self: !!article && article.original}"><span>原创</span></div>
+        <div class="origin" v-if="!!article && !article.original" :class="{other: !!article && !article.original}"><span>转载</span></div>
         <div class="render-text" :class="{show: !!article}">
           <div class="render" v-if="article">
             <header>
@@ -99,5 +100,5 @@
 </script>
 
 <style lang="less" scoped>
-  @import "article";
+  @import "index";
 </style>

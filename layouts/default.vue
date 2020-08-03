@@ -1,17 +1,17 @@
 <template>
-    <div>
-        <blog-canvas key="bg"></blog-canvas>
-        <blog-header-top class="app-header"></blog-header-top>
-        <div class="nuxt-view">
-            <div class="left-container" v-if="!$route.path.includes('playervideo')">
-                <blog-aside-nav></blog-aside-nav>
-            </div>
-            <nuxt class="router-page"/>
-        </div>
-        <client-only>
-            <player v-if="openPlayer"></player>
-        </client-only>
+  <div>
+    <!--        <blog-canvas key="bg"></blog-canvas>-->
+    <blog-header-top class="app-header"></blog-header-top>
+    <div class="nuxt-view" ref="nuxtWrapper">
+      <div class="left-container" v-if="!$route.path.includes('playervideo')">
+        <blog-aside-nav></blog-aside-nav>
+      </div>
+      <nuxt class="router-page"/>
     </div>
+    <client-only>
+      <player v-if="openPlayer"></player>
+    </client-only>
+  </div>
 </template>
 
 <script>
@@ -32,8 +32,12 @@
         openPlayer: state => state.common.openPlayer
       })
     },
-    mounted() {
+    fetch({ store }) {
+
+    },
+    async mounted() {
       let a_idx = 0
+      this.$store.dispatch('category/getCategory')
       jQuery(document).ready(function($) {
         $('body').click(function(e) {
           const a = new Array('天真', '富强', '民主', '文明', '和谐', '自由', '平等', '公正', '法治', '爱国', '敬业', '诚信', '友善')
@@ -60,7 +64,7 @@
               $i.remove()
             })
         })
-      })
+      });
     },
     components: {
       BlogHeaderTop,
@@ -72,63 +76,34 @@
     },
     watch: {
       $route() {
-        console.log(this)
       }
     }
   }
 </script>
 
 <style>
-    html {
-        font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-        Roboto, 'Helvetica Neue', Arial, sans-serif;
-        font-size: 100px;
-        word-spacing: 1px;
-        -ms-text-size-adjust: 100%;
-        -webkit-text-size-adjust: 100%;
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        box-sizing: border-box;
-    }
 
-    *,
-    *:before,
-    *:after {
-        box-sizing: border-box;
-        margin: 0;
-    }
-
-    #app {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        color: #555;
-        width: 100%;
-    }
-
-    a {
-        color: #555;
-    }
 </style>
 
 <style lang="less" scoped>
 
-    .nuxt-view {
-        width: 1090px;
-        display: flex;
-        margin: 0 auto;
-        position: relative;
-        z-index: 10;
-
-        .left-container {
-            flex: 0 0 200px;
-            width: 200px;
-            padding-top: .2rem;
-        }
-
-        .router-page {
-            flex: 1;
-            transform-origin: left;
-            min-height: calc(100vh - 60px);
-        }
+  .nuxt-view {
+    width: 1090px;
+    display: flex;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    min-height: 1300px;
+    .left-container {
+      flex: 0 0 200px;
+      width: 200px;
+      padding-top: .2rem;
     }
+
+    .router-page {
+      flex: 1;
+      transform-origin: left;
+      min-height: calc(100vh - 60px);
+    }
+  }
 </style>

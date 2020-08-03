@@ -1,36 +1,34 @@
 <template>
   <div class="aside-recommend">
+    <div class="search-wrapper">
+      <input type="text" placeholder="请输入搜索内容" />
+      <span class="iconfont icon-search"></span>
+    </div>
     <div class="hot">
       <h4>
-        <Icon type="md-flame"/>
         {{asideHot.title}}
       </h4>
-      <ul v-if="articleList.length > 0">
-        <li v-for="(sub_item, sub_index) in articleList"
+      <ul v-if="hotArticleList.length > 0">
+        <li v-for="(sub_item, sub_index) in hotArticleList"
             :key="sub_index"
-            ref="lis">
-          <p class="content">
+            ref="lis"
+        >
+          <nuxt-link :to="`/article/${sub_item.id}`" class="content">
             <span class="rank">{{sub_index + 1}}</span>
             <span class="title" :title="sub_item.title">{{sub_item.title}}</span>
-          </p>
+          </nuxt-link>
         </li>
       </ul>
     </div>
-
-    <!--<div class="curr-time">-->
-      <!--<span>{{times.hours}}</span><em>:</em>-->
-      <!--<span>{{times.minutes}}</span><em>:</em>-->
-      <!--<span>{{times.seconds}}</span>-->
-    <!--</div>-->
     <div class="category">
       <div class="tags">
-        <Icon type="logo-instagram" size="18" />
         <span>标签</span>
       </div>
       <div class="cate-content">
         <div class="span" v-for="item in tagList" :key="item.icon">
-          <span class="iconfont" :class="item.icon"></span>
-          <span>{{item.name}}</span>
+          <span class="iconfont icon" :class="item.icon"></span>
+          <span class="name">{{item.name}}</span>
+          <span class="count">[{{item.article_count}}]</span>
         </div>
       </div>
     </div>
@@ -63,7 +61,7 @@
     },
     computed: {
       ...mapState({
-        articleList: state => state.article.articleList,
+        hotArticleList: state => state.article.hotArticleList,
         tagList: state => state.tag.tagList
       })
     },
