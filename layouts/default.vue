@@ -3,7 +3,7 @@
     <!--        <blog-canvas key="bg"></blog-canvas>-->
     <blog-header-top class="app-header"></blog-header-top>
     <div class="nuxt-view" ref="nuxtWrapper">
-      <div class="left-container" v-if="!$route.path.includes('playervideo')">
+      <div class="left-container" v-if="showLeft">
         <blog-aside-nav></blog-aside-nav>
       </div>
       <nuxt class="router-page"/>
@@ -30,7 +30,10 @@
       },
       ...mapState({
         openPlayer: state => state.common.openPlayer
-      })
+      }),
+      showLeft() {
+        return !this.$route.path.includes('topic')
+      }
     },
     fetch({ store }) {
 
@@ -81,10 +84,6 @@
   }
 </script>
 
-<style>
-
-</style>
-
 <style lang="less" scoped>
 
   .nuxt-view {
@@ -93,10 +92,9 @@
     margin: 0 auto;
     position: relative;
     z-index: 10;
-    min-height: 1300px;
     .left-container {
-      flex: 0 0 200px;
-      width: 200px;
+      flex: 0 0 170px;
+      width: 170px;
       padding-top: .2rem;
     }
 

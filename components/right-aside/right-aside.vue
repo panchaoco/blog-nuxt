@@ -21,9 +21,6 @@
       </ul>
     </div>
     <div class="category">
-      <div class="tags">
-        <span>标签</span>
-      </div>
       <div class="cate-content">
         <div class="span" v-for="item in tagList" :key="item.icon">
           <span class="iconfont icon" :class="item.icon"></span>

@@ -29,7 +29,7 @@
         <div class="comment-container">
           <div class="comment-item" v-for="(item, index) in commentList" :key="index">
             <div class="avatar">
-              <img src="~assets/images/default.jpeg" alt="">
+              <img src="~assets/img/default.jpeg" alt="">
             </div>
             <div class="content">
               <p>

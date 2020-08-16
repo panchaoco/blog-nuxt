@@ -19,17 +19,21 @@
             <input v-model="searchValue" placeholder="搜索内容" />
           </div>
         </nav>
-        <span class="app-d">
-<!--          <Icon type="ios-phone-portrait"></Icon>-->
-          客户端
-        </span>
+        <div class="app-d">
+          <span>客户端</span>
+          <button class="login-register" @click="userProfile">登录 / 注册</button>
+        </div>
       </div>
     </div>
+    <blog-dialog v-model="dialogVisible">
+      <login  @close="dialogVisible = false" />
+    </blog-dialog>
   </div>
 </template>
 
 <script>
-  import {mapState} from 'vuex'
+  import BlogDialog from '../dialog'
+  import Login from '../login'
   export default {
     name: "HeaderTop",
     data() {
@@ -43,7 +47,8 @@
           {name: '首页', path: '/', show: true},
           {name: '话题', path: '/', show: true},
         ],
-        searchValue: ''
+        searchValue: '',
+        dialogVisible: false,
       }
     },
     props: {
@@ -58,6 +63,10 @@
     },
     computed: {
     },
+    components: {
+      BlogDialog,
+      Login
+    },
     created() {
     },
     methods: {
@@ -66,6 +75,9 @@
       },
       openMenu() {
         this.$emit('open-menu')
+      },
+      userProfile() {
+        this.dialogVisible = true
       }
     },
   }

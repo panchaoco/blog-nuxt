@@ -25,6 +25,11 @@ const routes = [
     name: 'Video'
   },
   {
+    title: '话题',
+    path: '/topic',
+    name: 'Topic'
+  },
+  {
     title: '生活、诗歌、文集',
     icon: 'logo-buffer',
     path: '/group',
@@ -38,29 +43,10 @@ const routes = [
     name: 'Music'
   },
   {
-    title: '作品展示',
-    icon: 'md-medal',
-    path: '/works',
-    name: 'Works'
-  },
-  {
-    title: '个人资料',
-    icon: 'md-easel',
-    path: '/bloguser',
-    name: 'Works'
-  },
-  {
     title: '前端面试题',
     icon: 'ios-grid',
     path: '/interview',
     name: 'Interview'
-  },
-  {
-    title: '一枝独秀',
-    icon: 'md-ribbon',
-    path: '/group',
-    name: 'flutter',
-    isHot: true
   },
   {
     title: '客户端',

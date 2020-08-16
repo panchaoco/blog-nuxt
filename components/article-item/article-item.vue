@@ -14,29 +14,29 @@
           <div class="hot-item">
             <span class="tag" :class="{original: !!item.original}">{{ item.original ? '原创' : '转载' }}</span>
             <div class="img-box">
-              <img :src="item.img_src || require('../../assets/images/default.jpeg')" alt="">
+              <img :src="item.img_src || require('../../assets/img/default.jpeg')" alt="">
             </div>
             <div class="content">
               <div class="top">
-                <nuxt-link :to="`/article/${item.id}?type=${item.type || ''}`"><h1>{{item.title}}</h1></nuxt-link>
+                <nuxt-link :to="`/article/${item.id}`"><h1>{{item.title}}</h1></nuxt-link>
                 <p>{{item.desc}}</p>
               </div>
               <div class="profile">
-                <div class="item up">
-                  <span class="iconfont icon-read"></span>
-                  <span>{{item.look_count}}</span>阅读
-                </div>
                 <div class="item time">
-                  <span class="iconfont icon-time"></span>
+                  <span class="iconfont icon-time_fill" style="font-size: 12px;"></span>
                   <span>{{item.updated_at | formatTime}}</span>
                 </div>
-                <div class="item">
-                  <span class="iconfont icon-comment"></span>
-                  <span>{{item.comment_count}} 评论 </span>
+                <div class="item up">
+                  <span class="iconfont icon-browse_fill"></span>
+                  <span>{{item.look_count}}</span>
                 </div>
                 <div class="item">
-                  <span class="iconfont icon-good"></span>
-                  <span>{{item.thumbs_up_count}} 赞 </span>
+                  <span class="iconfont icon-message_fill"></span>
+                  <span>{{item.comment_count}} </span>
+                </div>
+                <div class="item">
+                  <span class="iconfont icon-like_fill"></span>
+                  <span>{{item.thumbs_up_count}} </span>
                 </div>
               </div>
             </div>
@@ -127,7 +127,7 @@
     },
     filters: {
       formatTime(time) {
-        return time.split(/\s+/)[0]
+        return time
       }
     },
     components: {

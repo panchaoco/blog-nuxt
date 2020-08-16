@@ -11,20 +11,20 @@
         <transition name="fade">
           <div v-if="!showYes" class="left slide-item" :class="{'active': open}">
             <div class="player-img">
-              <img src="../../assets/images/fm.jpeg" alt="">
+              <img src="../../assets/img/fm.jpeg" alt="">
             </div>
           </div>
         </transition>
         <transition name="fade">
           <div v-if="!showYes" class="right slide-item" :class="{'active': open}">
             <div class="player-img">
-              <img src="../../assets/images/fm.jpeg" alt="">
+              <img src="../../assets/img/fm.jpeg" alt="">
             </div>
           </div>
         </transition>
         <div v-if="showYes" class="yes">
           <div class="player-img">
-            <img src="../../assets/images/fm.jpeg" alt="">
+            <img src="../../assets/img/fm.jpeg" alt="">
           </div>
         </div>
       </div>
@@ -96,7 +96,7 @@
     .bg {
       width: 100%;
       height: 100%;
-      background-image: url("../../assets/images/fm.jpeg");
+      background-image: url("../../assets/img/fm.jpeg");
       background-size: cover;
       filter: blur(10px);
       opacity: 0;

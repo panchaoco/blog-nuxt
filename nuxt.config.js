@@ -13,7 +13,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '//at.alicdn.com/t/font_1114196_klxt5he60d.css' },
+      { rel: 'stylesheet', href: '//at.alicdn.com/t/font_1114196_iu9s4nvrbka.css' },
     ]
   },
   /*
@@ -70,6 +70,9 @@ export default {
     }
   },
   styleResources: {
-    less: './assets/styles/reset.less',
+    less:  [
+      './assets/styles/reset.less',
+      './assets/styles/theme.less'
+    ]
   },
 }

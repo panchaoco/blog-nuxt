@@ -64,7 +64,7 @@ export const actions = {
     commit('updateArticleNode', handleArticleNode(res) || [])
   },
   async updateArticle({ commit, state }, payload) {
-    const res = await Axios('/v1/api/articles', {
+    const res = await Axios('/v1/api/articles/read', {
       method: 'PATCH',
       body: payload
     });

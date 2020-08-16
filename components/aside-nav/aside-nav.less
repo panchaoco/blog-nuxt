@@ -1,6 +1,6 @@
 .left-aside {
   position: fixed;
-  width: 200px;
+  width: 170px;
   z-index: 100;
   ul {
     //background-color: #fff;
@@ -9,13 +9,17 @@
       height: 0.5rem;
       line-height: 0.5rem;
       font-size: 0.14rem;
-      padding-left: 15px;
       transition: all .2s;
       cursor: pointer;
       position: relative;
       font-weight: 600;
       //overflow: hidden;
-
+      a {
+        padding-left: 5px;
+        &.nuxt-link-active {
+          background-color: #ffffff;
+        }
+      }
       span {
         margin-left: 5px;
       }

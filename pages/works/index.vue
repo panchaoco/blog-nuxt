@@ -40,7 +40,7 @@
             thumbs_up: 250,
             name: 'BIGame 电竞',
             desc: 'Vue 电竞老大',
-            image: require('../../assets/images/default.jpeg')
+            image: require('../../assets/img/default.jpeg')
           },
           {
             id: 1,
@@ -48,7 +48,7 @@
             thumbs_up: 250,
             name: 'BIGame 电竞',
             desc: 'Vue 电竞老大',
-            image: require('../../assets/images/default.jpeg')
+            image: require('../../assets/img/default.jpeg')
           },
           {
             id: 1,
@@ -56,7 +56,7 @@
             thumbs_up: 250,
             name: 'BIGame 电竞',
             desc: 'Vue 电竞老大',
-            image: require('../../assets/images/default.jpeg')
+            image: require('../../assets/img/default.jpeg')
           },
           {
             id: 1,
@@ -64,7 +64,7 @@
             thumbs_up: 250,
             name: 'BIGame 电竞',
             desc: 'Vue 电竞老大',
-            image: require('../../assets/images/default.jpeg')
+            image: require('../../assets/img/default.jpeg')
           },
           {
             id: 1,
@@ -72,7 +72,7 @@
             thumbs_up: 250,
             name: 'BIGame 电竞',
             desc: 'Vue 电竞老大',
-            image: require('../../assets/images/default.jpeg')
+            image: require('../../assets/img/default.jpeg')
           },
           {
             id: 1,
@@ -80,7 +80,7 @@
             thumbs_up: 250,
             name: 'BIGame 电竞',
             desc: 'Vue 电竞老大',
-            image: require('../../assets/images/default.jpeg')
+            image: require('../../assets/img/default.jpeg')
           },
           {
             id: 1,
@@ -88,7 +88,7 @@
             thumbs_up: 250,
             name: 'BIGame 电竞',
             desc: 'Vue 电竞老大',
-            image: require('../../assets/images/default.jpeg')
+            image: require('../../assets/img/default.jpeg')
           },
           {
             id: 1,
@@ -96,7 +96,7 @@
             thumbs_up: 250,
             name: 'BIGame 电竞',
             desc: 'Vue 电竞老大',
-            image: require('../../assets/images/default.jpeg')
+            image: require('../../assets/img/default.jpeg')
           },
           {
             id: 1,
@@ -104,7 +104,7 @@
             thumbs_up: 250,
             name: 'BIGame 电竞',
             desc: 'Vue 电竞老大',
-            image: require('../../assets/images/default.jpeg')
+            image: require('../../assets/img/default.jpeg')
           },
           {
             id: 1,
@@ -112,7 +112,7 @@
             thumbs_up: 250,
             name: 'BIGame 电竞',
             desc: 'Vue 电竞老大',
-            image: require('../../assets/images/default.jpeg')
+            image: require('../../assets/img/default.jpeg')
           },
           {
             id: 1,
@@ -120,7 +120,7 @@
             thumbs_up: 250,
             name: 'BIGame 电竞',
             desc: 'Vue 电竞老大',
-            image: require('../../assets/images/default.jpeg')
+            image: require('../../assets/img/default.jpeg')
           },
           {
             id: 1,
@@ -128,7 +128,7 @@
             thumbs_up: 250,
             name: 'BIGame 电竞',
             desc: 'Vue 电竞老大',
-            image: require('../../assets/images/default.jpeg')
+            image: require('../../assets/img/default.jpeg')
           },
           {
             id: 1,
@@ -136,7 +136,7 @@
             thumbs_up: 250,
             name: 'BIGame 电竞',
             desc: 'Vue 电竞老大',
-            image: require('../../assets/images/default.jpeg')
+            image: require('../../assets/img/default.jpeg')
           },
           {
             id: 1,
@@ -144,7 +144,7 @@
             thumbs_up: 250,
             name: 'BIGame 电竞',
             desc: 'Vue 电竞老大',
-            image: require('../../assets/images/default.jpeg')
+            image: require('../../assets/img/default.jpeg')
           },
           {
             id: 1,
@@ -152,7 +152,7 @@
             thumbs_up: 250,
             name: 'BIGame 电竞',
             desc: 'Vue 电竞老大',
-            image: require('../../assets/images/default.jpeg')
+            image: require('../../assets/img/default.jpeg')
           },
           {
             id: 1,
@@ -160,7 +160,7 @@
             thumbs_up: 250,
             name: 'BIGame 电竞',
             desc: 'Vue 电竞老大',
-            image: require('../../assets/images/default.jpeg')
+            image: require('../../assets/img/default.jpeg')
           },
         ]
       }

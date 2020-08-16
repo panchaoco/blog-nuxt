@@ -1,9 +1,7 @@
 <template>
   <section class="left-aside" key="aside-nav">
     <ul>
-      <li v-for="(item, index) in categoryList" :key="index"
-          :class="{active: item.path === $route.path}"
-      >
+      <li v-for="(item, index) in categoryList" :key="index">
         <nuxt-link class="nav-link" v-if="item.path === '/group'" :to="`${item.path}/${item.id}`">
           <span class="iconfont" :class="`${item.icon}`" v-if="!item.ivu_icon"></span>
           <span class="ivu-icon" :class="`ivu-icon-${item.ivu_icon}`" v-else></span>

@@ -36,7 +36,6 @@ const Axios = async (url, options = {}) => {
     if (options.headers) {
       opt.headers = options.headers
     }
-    console.log('params', opt)
     res = await instance.get(api, opt)
   } else if (method === 'post') {
     res = await instance.post(api, options.body)
@@ -48,7 +47,6 @@ const Axios = async (url, options = {}) => {
   }
   return new Promise((resolve, reject) => {
     if (url === '/v1/api/category') {
-      console.log(res)
     }
     if (res && res.status >= 200 && res.status < 300) {
       return resolve(res.data)
