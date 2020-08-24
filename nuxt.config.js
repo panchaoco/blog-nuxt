@@ -1,4 +1,3 @@
-const internalIp = require('internal-ip')
 export default {
   mode: 'universal',
   /*
@@ -17,7 +16,6 @@ export default {
     ]
   },
 
-  server: { host: internalIp.v4.sync(), port: 10511 },
   /*
   ** Customize the progress-bar color
   */
