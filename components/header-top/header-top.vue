@@ -20,7 +20,6 @@
           </div>
         </nav>
         <div class="app-d">
-          <span>客户端</span>
           <button class="login-register" @click="userProfile">登录 / 注册</button>
         </div>
       </div>

@@ -1,4 +1,4 @@
-
+const internalIp = require('internal-ip')
 export default {
   mode: 'universal',
   /*
@@ -13,9 +13,11 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '//at.alicdn.com/t/font_1114196_iu9s4nvrbka.css' },
+      { rel: 'stylesheet', href: '//at.alicdn.com/t/font_1114196_w989p7lpsrr.css' },
     ]
   },
+
+  server: { host: internalIp.v4.sync(), port: 10511 },
   /*
   ** Customize the progress-bar color
   */

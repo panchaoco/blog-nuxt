@@ -87,7 +87,7 @@
 <style lang="less" scoped>
 
   .nuxt-view {
-    width: 1090px;
+    width: 1100px;
     display: flex;
     margin: 0 auto;
     position: relative;

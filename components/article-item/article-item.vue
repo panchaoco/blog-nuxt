@@ -9,8 +9,8 @@
           </no-ssr>
         </li>
       </ul>
-      <ul v-else>
-        <li v-for="(item, index) in articleList" :key="index">
+      <ul class="article-item-wrapper" v-else>
+        <li class="article-item" v-for="(item, index) in articleList" :key="index">
           <div class="hot-item">
             <span class="tag" :class="{original: !!item.original}">{{ item.original ? '原创' : '转载' }}</span>
             <div class="img-box">
@@ -38,10 +38,31 @@
                   <span class="iconfont icon-like_fill"></span>
                   <span>{{item.thumbs_up_count}} </span>
                 </div>
+                <div class="item">
+                  <span class="iconfont icon-zhankai"></span>
+                  <span class="btn open-close" @click="onOpen(item, index)">
+                    {{ item.comment_count > 0 ? item.openComment ? '收起评论' : '展开评论' : '暂无评论'}}
+                  </span>
+                </div>
               </div>
             </div>
 
           </div>
+          <ul class="comments" :class="{open: item.openComment}">
+            <li class="comment-item" v-for="(cItem, index) in item.comments.slice(0, 2)" :key="index">
+              <div class="avatar-img">
+                <img v-lazy="cItem.avatar" alt="">
+              </div>
+              <div class="comment-cont">
+                <div class="info">
+                  <span>{{cItem.user.nickname}}</span>
+                  <span>{{cItem.created_at}}</span>
+                </div>
+                <p class="replay" v-if="cItem.reply_user"> 回复 <strong>{{cItem.reply_user.nickname}}</strong></p>
+                <p>{{cItem.content}}</p>
+              </div>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
@@ -79,7 +100,8 @@
           simulateTouch: false,
           preloadImages: false,
           lazy: true
-        }
+        },
+        openComment: false
       }
     },
     computed: {
@@ -106,6 +128,15 @@
             this.slides = res.data
           }
         })
+      },
+      onOpen(item, index) {
+        if (item.comment_count === 0) return
+        const newItem = Object.assign(item, {
+          openComment: !!!item.openComment
+        })
+        const data = JSON.parse(JSON.stringify(this.articleList))
+        this.$set(data, index, newItem)
+        this.$store.commit('article/updateArticleList', data)
       },
       getArticle() {
         const article_type = this.$route.name !== 'Diary' ? 1 : 2

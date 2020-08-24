@@ -1,4 +1,5 @@
 import axios from 'axios'
+import store from '../store'
 import {
   apiHost
 } from "./environment"
@@ -8,6 +9,10 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   config => {
+    console.log('process.browser', process.browser)
+    if (process.browser && window.localStorage.getItem('token')) {
+      config.headers.Authorization = `Bearer ${window.localStorage.getItem('token')}`
+    }
     return config
   }
 )
@@ -21,7 +26,7 @@ instance.interceptors.response.use(
   }
 )
 
-const Axios = async (url, options = {}) => {
+const request = async (url, options = {}) => {
   let api = url.includes('http') ? url : `${apiHost}${url}`;
   const method = (options.method || 'GET').toLocaleLowerCase()
   let res = null
@@ -32,9 +37,6 @@ const Axios = async (url, options = {}) => {
     if (opt.params.id) {
       api += `/${opt.params.id}`;
       delete opt.params.id;
-    }
-    if (options.headers) {
-      opt.headers = options.headers
     }
     res = await instance.get(api, opt)
   } else if (method === 'post') {
@@ -56,4 +58,4 @@ const Axios = async (url, options = {}) => {
   })
 }
 
-export default Axios
+export default request

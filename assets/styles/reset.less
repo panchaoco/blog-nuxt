@@ -35,8 +35,6 @@ select {
   &:focus {
     outline: none;
   }
-
-  font-weight: 400;
 }
 
 h1 {
@@ -57,7 +55,9 @@ body {
   //font-size: 12.5px;
   overflow-x: hidden;
   //font-family: SpecialSymbol, DINRegular, -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft YaHei", "微软雅黑", sans-serif;
+  color: #666;
 }
+
 
 ol {
   padding-left: 15px;
@@ -144,4 +144,28 @@ h5 {
 h6 {
   font-size: 12px;
   padding: 5px 0;
+}
+
+// 滚动条
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: #dddddd;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 4px;
+  transition: all .2s;
+}
+
+:hover::-webkit-scrollbar-thumb {
+  transition: all .2s;
+  background: hsla(0, 0%, 53%, 0.6);
+}
+
+:hover::-webkit-scrollbar-track {
+  transition: all .2s;
+  background: hsla(0, 0%, 53%, 0.1);
 }

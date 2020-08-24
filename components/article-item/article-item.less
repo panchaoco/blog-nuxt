@@ -24,21 +24,20 @@
   }
   .hot-content {
     width: 100%;
-    ul {
-      li {
+    .article-item-wrapper {
+      .article-item {
         background-color: #f9f9f9;
         margin-bottom: 10px;
-        padding: 10px 8px;
-        transition: all .3s ease-in-out;
-        cursor: pointer;
         .hot-item {
           display: flex;
           width: 100%;
           position: relative;
+          padding: 10px 8px;
+          transition: all .3s ease-in-out;
           .tag {
             position: absolute;
-            left: 0;
-            top: 0;
+            left: 8px;
+            top: 10px;
             width: 40px;
             height: 20px;
             background-color: #f94d4d;
@@ -74,19 +73,18 @@
             .top {
               > a {
                 h1 {
-                  font-size: 0.15rem;
+                  font-size: 14px;
                   font-weight: 600;
                   padding-bottom: 0.05rem;
                   color: #666;
                   transition: all .3s linear;
                   &:hover {
-                    text-decoration: underline;
-                    padding-left: 0.1rem;
+                    color: #1d83f5;
                   }
                 }
               }
               > p {
-                font-size: 14px;
+                font-size: 13px;
                 line-height: 0.2rem;
                 padding-right: 0.2rem;
                 color: #555;
@@ -110,6 +108,9 @@
                   position: relative;
                   font-size: 13px;
                 }
+                .icon-zhankai {
+                  transform: rotate(90deg);
+                }
                 span {
                   margin: 0 2px;
                   font-size: 12px;
@@ -123,19 +124,56 @@
               }
             }
           }
-        }
-        &:hover {
-          background-color: #dedede;
-          .hot-item {
-            .tag {
-              background-color: #ff1b1b;
-              &.original {
-                background-color: #0cd28a;
+          &:hover {
+            background-color: #dedede;
+            .hot-item {
+              .tag {
+                background-color: #ff1b1b;
+                &.original {
+                  background-color: #0cd28a;
+                }
+              }
+              img {
+                transform: scale(1.1) rotate(3deg);
               }
             }
-            img {
-              transform: scale(1.1) rotate(3deg);
+          }
+        }
+        .comments {
+          font-size: 12px;
+          background-color: #f9f9f9;
+          height: 0;
+          overflow: hidden;
+          opacity: 0;
+          transition: all .4s;
+          transition-delay: 0.2s;
+          transform: translate3d(0, 0, 0);
+          .comment-item {
+            border-bottom: 1px solid #F3F3FA;
+            padding: 10px 8px;
+            background-color: #f8f8f5;
+            .avatar-img {
+              display: inline-block;
+              vertical-align: middle;
+              img {
+                width: 40px;
+                height: 40px;
+                display: block;
+              }
             }
+            .comment-cont {
+              display: inline-block;
+              vertical-align: middle;
+              margin-left: 10px;
+              .replay {
+                padding: 6px 0;
+              }
+            }
+          }
+          &.open {
+            opacity: 1;
+            height: 150px;
+            padding-top: 10px;
           }
         }
       }
@@ -160,7 +198,7 @@
     }
   }
   .hot-item {
-    padding: .1rem 0 .06rem .1rem;
+    padding: 10px 0 .06rem 10px;
     img {
       display: none;
     }

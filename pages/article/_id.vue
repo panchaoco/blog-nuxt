@@ -33,19 +33,17 @@
             </div>
             <div class="content">
               <p>
-                <strong>{{item.nickname}}</strong>
+                <strong>{{item.user.nickname}}</strong>
                 <strong class="id">#{{item.id}}</strong>
               </p>
-              <p class="replay" v-if="item.replay"> 回复 <strong>{{item.replay.nickname}}</strong></p>
+              <p class="replay" v-if="item.reply_user"> 回复 <strong>{{item.reply_user.nickname}}</strong></p>
               <p class="comment-text">{{item.content}}</p>
               <div class="row">
                 <span class="item">15:40</span>
                 <span class="item" @click="replay(item)">
-                  <Icon type="ios-undo" size="17" />
                   <strong>回复</strong>
                 </span>
                 <span class="item">
-                  <Icon type="ios-thumbs-up" size="13" />
                   赞
                 </span>
               </div>

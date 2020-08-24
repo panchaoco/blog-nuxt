@@ -23,7 +23,7 @@
             <span class="iconfont icon-down"></span>
             <span class="area">+86</span>
             <input v-model="formData.phone" class="phone" type="text" placeholder="请输入您的手机号" />
-            <span class="label" @click="phone = true">验证码登录</span>
+            <span class="label" @click="codeLogin">验证码登录</span>
           </div>
           <div class="item" key="4">
             <input v-model="formData.password" type="password" placeholder="请输入密码" />
@@ -32,7 +32,7 @@
             <input v-model="formData.ok_password" type="password" placeholder="请确认密码" />
           </div>
           <div class="item ok-password" key="6" :class="{height: register}">
-            <input v-model="formData.username" type="text" placeholder="请输入昵称" />
+            <input v-model="formData.nickname" type="text" placeholder="请输入昵称" />
           </div>
           <div class="to-register">
             <span @click="toRegister" v-if="!register">点击注册</span>
@@ -41,8 +41,8 @@
         </div>
       </transition>
     </div>
-    <button class="login-btn" v-show="!register">点击登录</button>
-    <button class="login-btn" v-show="register" @click.prevent="gotoRegister">点击注册</button>
+    <div class="login-btn" type="button" v-show="!register" @click.prevent="gotoLogin">点击登录</div>
+    <div class="login-btn" type="button" v-show="register" @click.prevent="gotoRegister">点击注册</div>
     <div class="other-btn">
       <div class="btn wechat">
         <span class="iconfont icon-wechat"></span>
@@ -72,13 +72,18 @@
           phone: '',
           password: '',
           ok_password: '',
-          username: ''
+          username: '',
+          nickname: '',
         }
       }
     },
     methods: {
       toRegister() {
         this.register = true;
+      },
+      codeLogin() {
+        this.register = false
+        this.phone = true
       },
       toLogin() {
         this.register = false
@@ -91,6 +96,23 @@
             method: 'post',
             body: this.formData
           })
+          if (res.state === 0) {
+            window.localStorage.setItem('token', res.data.token)
+            this.$emit('close')
+          }
+        }
+      },
+      async gotoLogin() {
+        const res = await axios( '/v1/api/login', {
+          method: 'post',
+          body: {
+            username: this.formData.phone,
+            password: this.formData.password
+          }
+        })
+        if (res.state === 0) {
+          window.localStorage.setItem('token', res.data.token)
+          this.$emit('close')
         }
       }
     }
@@ -159,6 +181,9 @@
       background-color: @mainColor;
       color: #ffffff;
       margin-top: 40px;
+      line-height: 45px;
+      text-align: center;
+      cursor: pointer;
     }
     .to-register {
       text-align: right;

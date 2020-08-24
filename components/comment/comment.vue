@@ -1,27 +1,13 @@
 <template>
   <div class="submit-comment">
-    <ul class="top">
-      <li>
-        <label>昵称*</label>
-        <input v-model="commentData.nickname" type="text" />
-      </li>
-      <li>
-        <label>邮箱*</label>
-        <input v-model="commentData.email" type="email" />
-      </li>
-      <li>
-        <label>网址</label>
-        <input v-model="commentData.link" type="url" />
-      </li>
-    </ul>
     <div class="comment-wrapper">
       <p class="replay" v-if="replayUser">
-        # <strong>{{replayUser.nickname}}</strong>
+        # <strong>{{replayUser.user.nickname}}</strong> #
       </p>
       <textarea v-model="commentData.content" name="" id="" rows="8"></textarea>
     </div>
     <div class="comment-btn">
-      <button class="submit-btn" @click="submit">评论</button>
+      <button class="submit-btn" @click.prevent.stop="submit">评论</button>
     </div>
   </div>
 </template>
@@ -48,21 +34,16 @@
     },
     methods: {
       submit() {
-        if (!this.commentData.nickname) {
-          return this.$Message.warning('昵称不能为空');
-        }
-        if (!this.commentData.email) {
-          return this.$Message.warning('邮箱地址不能为空');
-        }
         if (!this.commentData.content) {
-          return this.$Message.warning('评论内容不能为空');
+          alert('评论内容不能为空')
         }
         const payload = {
-          article_id: this.$route.params.id,
+          article_id: Number(this.$route.params.id),
           ...this.commentData
         }
         if (this.replayUser) {
           payload.parent_id = this.replayUser.id
+          payload.reply_user_id = this.replayUser.user.id
         }
         this.$store.dispatch('article/createComment', payload).then(res => {
           this.commentData = Object.assign({}, {...COMMENT_DATA})
@@ -107,6 +88,7 @@
     .comment-wrapper {
       margin-top: 10px;
       background-color: #cfcfcf;
+      font-size: 14px;
       .replay {
         border-bottom: 1px solid #acacac;
         padding: 10px 5px;
