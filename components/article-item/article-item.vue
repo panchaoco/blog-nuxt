@@ -48,7 +48,7 @@
             </div>
 
           </div>
-          <ul class="comments" :class="{open: item.openComment}">
+          <ul class="comments" :class="{open: item.openComment}" v-if="item.comments">
             <li class="comment-item" v-for="(cItem, index) in item.comments.slice(0, 2)" :key="index">
               <div class="avatar-img">
                 <img v-lazy="cItem.avatar" alt="">
