@@ -48,21 +48,23 @@
             </div>
 
           </div>
-          <ul class="comments" :class="{open: item.openComment}" v-if="item.comments">
-            <li class="comment-item" v-for="(cItem, index) in item.comments.slice(0, 2)" :key="index">
-              <div class="avatar-img">
-                <img v-lazy="cItem.avatar" alt="">
-              </div>
-              <div class="comment-cont">
-                <div class="info">
-                  <span>{{cItem.user.nickname}}</span>
-                  <span>{{cItem.created_at}}</span>
+          <no-ssr>
+            <ul class="comments" :class="{open: item.openComment}" v-if="item.comments">
+              <li class="comment-item" v-for="(cItem, index) in item.comments.slice(0, 2)" :key="index">
+                <div class="avatar-img">
+                  <img v-lazy="cItem.avatar" alt="">
                 </div>
-                <p class="replay" v-if="cItem.reply_user"> 回复 <strong>{{cItem.reply_user.nickname}}</strong></p>
-                <p>{{cItem.content}}</p>
-              </div>
-            </li>
-          </ul>
+                <div class="comment-cont">
+                  <div class="info">
+                    <span>{{cItem.user.nickname}}</span>
+                    <span>{{cItem.created_at}}</span>
+                  </div>
+                  <p class="replay" v-if="cItem.reply_user"> 回复 <strong>{{cItem.reply_user.nickname}}</strong></p>
+                  <p>{{cItem.content}}</p>
+                </div>
+              </li>
+            </ul>
+          </no-ssr>
         </li>
       </ul>
     </div>
