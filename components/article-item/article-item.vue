@@ -39,7 +39,7 @@
                   <span>{{item.thumbs_up_count}} </span>
                 </div>
                 <div class="item">
-                  <span class="iconfont icon-zhankai"></span>
+                  <span class="iconfont icon-order_fill"></span>
                   <span class="btn open-close" @click="onOpen(item, index)">
                     {{ item.comment_count > 0 ? item.openComment ? '收起评论' : '展开评论' : '暂无评论'}}
                   </span>
@@ -158,7 +158,7 @@
     },
     filters: {
       formatTime(time) {
-        return time
+        return time.split(' ')[0]
       }
     },
     components: {

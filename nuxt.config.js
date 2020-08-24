@@ -30,7 +30,7 @@ export default {
     // {src: '~assets/iconfont/ionicons.styles'},
     { src: '~assets/styles/reset.less', lang: 'less' },
     { src: '~assets/styles/common.less', lang: 'less' },
-    'highlight.js/styles/github.css',
+    'highlight.js/styles/atom-one-dark.css',
     'mavon-editor/dist/css/index.css'
   ],
   /*
@@ -76,5 +76,5 @@ export default {
       './assets/styles/reset.less',
       './assets/styles/theme.less'
     ]
-  },
+  }
 }

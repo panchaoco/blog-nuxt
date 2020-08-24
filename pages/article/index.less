@@ -36,24 +36,24 @@
   animation: show .2s ease-in-out forwards;
   >.origin {
     position: absolute;
-    top: -0.64rem;
-    left: -0.62rem;
+    top: -64px;
+    left: -62px;
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
-    width: 1.24rem;
-    height: 1.24rem;
-    line-height: 2rem;
+    width: 124px;
+    height: 124px;
+    line-height: 200px;
     text-align: center;
     -webkit-transform-origin: center;
     transform-origin: center;
     color: #fff;
     font-weight: 600;
-    font-size: .18rem;
+    font-size: 18px;
     text-transform: uppercase;
     letter-spacing: 2px;
     &.self {
       background-color: rgba(76,175,80,.8);
-      padding-right: 0.04rem;
+      padding-right: 4px;
     }
     &.other {
       background-color: #f5695e;
@@ -68,14 +68,17 @@
   .info {
     width: 100%;
     p {
-      height: .35rem;
-      line-height: .35rem;
+      height: 35px;
+      line-height: 35px;
       font-size: 13px;
       &.share {
         display: flex;
         align-items: center;
       }
       strong {
+        text-decoration: underline;
+      }
+      a {
         text-decoration: underline;
       }
     }
@@ -99,11 +102,16 @@
   padding: 10px 15px 10px 35px;
   background-color: #fff;
   font-size: 14px;
+  .not-comment {
+    text-align: center;
+    font-weight: 600;
+    color: #0b7eff;
+    margin-left: -35px;
+  }
   .comment-item {
     background-color: #eee;
     display: flex;
-    padding: 15px 0;
-    min-height: 110px;
+    padding: 10px 0;
     margin-bottom: 10px;
   }
   .avatar {
@@ -124,6 +132,11 @@
     margin-left: 10px;
     padding-right: 15px;
     flex: 1;
+    .user {
+      .iconfont {
+        transform: translate3d(0, 2px, 0);
+      }
+    }
     .id {
       float: right;
     }
@@ -134,8 +147,9 @@
     }
     .row {
       .item {
-        color: #666;
+        color: #807c7c;
         margin-right: 40px;
+        font-size: 12px;
         cursor: pointer;
         strong {
           font-weight: normal;
@@ -161,7 +175,7 @@
   .art-title {
     font-size: 24px;
     line-height: 30px;
-    font-weight: normal;
+    font-weight: 600;
     padding-bottom: 20px;
     margin-bottom: 20px;
     border-bottom: 1px solid #e8e8e8;

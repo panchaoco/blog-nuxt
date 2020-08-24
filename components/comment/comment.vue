@@ -1,5 +1,10 @@
 <template>
   <div class="submit-comment">
+    <p class="nickname-wrapper" v-if="userInfo">
+      <span>
+        宇宙通用昵称：{{userInfo.nickname}}
+      </span>
+    </p>
     <div class="comment-wrapper">
       <p class="replay" v-if="replayUser">
         # <strong>{{replayUser.user.nickname}}</strong> #
@@ -13,6 +18,7 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
   const COMMENT_DATA = {
     nickname: '',
     email: '',
@@ -20,7 +26,7 @@
     content: ''
   }
   export default {
-    name: "comment",
+    name: "Comment",
     props: {
       replayUser: {
         type: Object,
@@ -31,6 +37,11 @@
       return {
         commentData: Object.assign({}, {...COMMENT_DATA})
       }
+    },
+    computed: {
+      ...mapState({
+        userInfo: state => state.user.userInfo
+      })
     },
     methods: {
       submit() {
@@ -59,6 +70,17 @@
     margin-top: 10px;
     background-color: #fff;
     padding: 10px;
+    .nickname-wrapper {
+      color: #ffffff;
+      line-height: 30px;
+      height: 30px;
+      background-color: #24282d;
+      padding-left: 10px;
+      span {
+        font-size: 12px;
+        border-radius: 3px;
+      }
+    }
     ul {
       display: flex;
       li {
@@ -86,7 +108,6 @@
       }
     }
     .comment-wrapper {
-      margin-top: 10px;
       background-color: #cfcfcf;
       font-size: 14px;
       .replay {
@@ -97,7 +118,7 @@
         width: 100%;
         background-color: #cfcfcf;
         padding: 10px;
-        min-height: 160px;
+        min-height: 140px;
         resize: none;
       }
     }

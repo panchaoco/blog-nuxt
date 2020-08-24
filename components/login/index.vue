@@ -35,7 +35,10 @@
             <input v-model="formData.nickname" type="text" placeholder="请输入昵称" />
           </div>
           <div class="to-register">
-            <span @click="toRegister" v-if="!register">点击注册</span>
+            <div v-if="!register">
+              <span>没有账号？</span>
+              <span @click="toRegister">点击注册</span>
+            </div>
             <span @click="toLogin" v-else>密码登录</span>
           </div>
         </div>
@@ -190,7 +193,7 @@
       padding: 5px 0;
       position: absolute;
       right: 50px;
-      span {
+      span:last-child {
         color: @mainColor;
         cursor: pointer;
       }

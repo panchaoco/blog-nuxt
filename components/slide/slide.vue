@@ -96,7 +96,7 @@
       min-width: 610px;
       width: 100%;
       display: block;
-      height: 2.4rem;
+      height: 220px;
     }
   }
 </style>

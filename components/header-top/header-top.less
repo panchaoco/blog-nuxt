@@ -5,7 +5,7 @@
   top: @top;
   content: ' ';
   width: 1px;
-  height: 0.14rem;
+  height: 14px;
   background-color: #cccccc;
 }
 .header-container {
@@ -59,38 +59,19 @@
       }
       .nav-wrapper {
         margin-right: auto;
-        margin-left: 0.3rem;
-        font-size: 0.16rem;
+        margin-left: 30px;
+        font-size: 16px;
         display: flex;
         align-items: center;
         ul {
           display: flex;
           li {
-            padding: 0 0.2rem;
+            padding: 20px;
             a {
               &:hover {
                 color: #2d8cf0;
               }
             }
-          }
-        }
-        .search-input {
-          width: 200px;
-          position: relative;
-          margin-left: 0.2rem;
-          /deep/.ivu-input {
-            border-radius: 0.2rem;
-            height: 0.3rem;
-          }
-          /deep/.ivu-form-item {
-            margin-bottom: 3px;
-          }
-          .md-search {
-            position: absolute;
-            top: 0.05rem;
-            right: 0.05rem;
-            font-size: 0.24rem;
-            color: #0b7eff;
           }
         }
       }
@@ -99,7 +80,7 @@
 
 }
 .app-d {
-  font-size: 0.16rem;
+  font-size: 16px;
   .login-register {
     background-color: transparent;
     color: #0088f5;
@@ -108,6 +89,18 @@
     border-radius: 3px;
     font-size: 12px;
     margin-left: 15px;
+  }
+}
+.user-info {
+  display: flex;
+  align-items: center;
+  .icon-people_fill {
+    font-size: 20px;
+    margin-right: 5px;
+  }
+  .nickname {
+    font-weight: 600;
+    cursor: pointer;
   }
 }
 #app.mobile {

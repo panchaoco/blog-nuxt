@@ -15,12 +15,13 @@
               <nuxt-link :to="item.path">{{item.name}}</nuxt-link>
             </li>
           </ul>
-          <div class="search-input">
-            <input v-model="searchValue" placeholder="搜索内容" />
-          </div>
         </nav>
-        <div class="app-d">
+        <div class="app-d" v-if="!userInfo">
           <button class="login-register" @click="userProfile">登录 / 注册</button>
+        </div>
+        <div class="user-info" v-else>
+          <span class="iconfont icon-people_fill"></span>
+          <span class="nickname">{{userInfo.nickname}}</span>
         </div>
       </div>
     </div>
@@ -33,6 +34,7 @@
 <script>
   import BlogDialog from '../dialog'
   import Login from '../login'
+  import { mapState } from 'vuex'
   export default {
     name: "HeaderTop",
     data() {
@@ -61,6 +63,9 @@
       }
     },
     computed: {
+      ...mapState({
+        userInfo: state => state.user.userInfo
+      })
     },
     components: {
       BlogDialog,
