@@ -15,6 +15,23 @@
   export default {
     name: 'Video',
     transition: 'move',
+    head() {
+      return {
+        title: 'PUBLIC【博客】—' + (this.categoryList ? this.categoryList.find(item => this.$route.path.includes(item.path)).name : '趣味和学习视频'),
+        meta: [
+          {
+            hid: 'keywords',
+            name: 'keywords',
+            content: 'nuxt, public, video, article'
+          },
+          {
+            hid: 'description',
+            name: 'description',
+            content: this.categoryList ? 'PUBLIC【博客】—' + this.categoryList.find(item => this.$route.path.includes(item.path)).name : '趣味和学习视频'
+          }
+        ]
+      }
+    },
     fetch({ store }) {
       return Promise.all([
         store.dispatch('article/article', {
@@ -25,6 +42,7 @@
     computed: {
       ...mapState({
         videoList: state => state.article.articleList,
+        categoryList: state => state.category.categoryList
       })
     },
     data() {

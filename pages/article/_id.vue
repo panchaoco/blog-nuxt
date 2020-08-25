@@ -1,5 +1,5 @@
 <template>
-  <div class="diary-article">
+  <article class="diary-article">
     <blog-wrapper :aside-nav="false">
       <div slot="middle" class="diary-con">
         <div class="origin" v-if="!!article && article.original" :class="{self: !!article && article.original}"><span>原创</span></div>
@@ -55,7 +55,7 @@
       </div>
       <blog-right-aside slot="right"></blog-right-aside>
     </blog-wrapper>
-  </div>
+  </article>
 </template>
 
 <script>
@@ -75,6 +75,23 @@
         href: '',
         replayUser: null,
         formatTime
+      }
+    },
+    head() {
+      return {
+        title: this.article.title + ' | PUBLIC博客站' || '...',
+        meta: [
+          {
+            hid: 'keywords',
+            name: 'keywords',
+            content: this.article && this.article.keywords && this.article.keywords.join(',') || this.article.title || ''
+          },
+          {
+            hid: 'description',
+            name: 'description',
+            content: this.article && this.article.description
+          }
+        ]
       }
     },
     mixins: [mixins],

@@ -36,6 +36,23 @@
   import { mapState } from 'vuex';
   export default {
     name: "Record",
+    head() {
+      return {
+        title: 'PUBLIC【博客站】 | 藏经阁-记录归档',
+        meta: [
+          {
+            hid: 'keywords',
+            name: 'keywords',
+            content: 'nuxt, public, 藏金阁, 博客归档'
+          },
+          {
+            hid: 'description',
+            name: 'description',
+            content: '归档记录'
+          }
+        ]
+      }
+    },
     data() {
       return {
         dataSource: []

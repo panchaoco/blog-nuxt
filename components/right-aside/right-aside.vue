@@ -20,10 +20,12 @@
         </li>
       </ul>
     </div>
-    <div class="qrcode">
-      <img src="~assets/img/qrcode.png" alt="">
-      <p>Public站</p>
-    </div>
+    <keep-alive>
+      <div class="qrcode">
+        <img src="~assets/img/qrcode.png" alt="">
+        <p>Public站</p>
+      </div>
+    </keep-alive>
     <div class="category">
       <div class="cate-content">
         <div class="span" v-for="item in tagList" :key="item.icon">

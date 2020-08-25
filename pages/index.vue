@@ -17,6 +17,11 @@
   import BlogRightAside from '../components/right-aside/right-aside';
   import Slide from '../components/slide/slide';
   export default {
+    head() {
+      return {
+        title: 'PUBLIC【博客】——主页'
+      }
+    },
     fetch({ store }) {
       return Promise.all([
         store.dispatch('common/getBanners'),
