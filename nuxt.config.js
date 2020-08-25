@@ -12,7 +12,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '//at.alicdn.com/t/font_1114196_w989p7lpsrr.css' },
+      { rel: 'stylesheet', href: '//at.alicdn.com/t/font_1114196_w989p7lpsrr.css' }
     ]
   },
 
@@ -28,6 +28,7 @@ export default {
     // {src: '~assets/iconfont/ionicons.styles'},
     { src: '~assets/styles/reset.less', lang: 'less' },
     { src: '~assets/styles/common.less', lang: 'less' },
+    { src: '~assets/animate/css/weather.css', lang: 'css' },
     'highlight.js/styles/atom-one-dark.css',
     'mavon-editor/dist/css/index.css'
   ],

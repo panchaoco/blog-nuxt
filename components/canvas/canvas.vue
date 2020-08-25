@@ -26,9 +26,10 @@
     top: 0;
     bottom: 0;
     opacity: 0.2;
-    filter: blur(3px);
-    background-color: #eee;
-    background-repeat: repeat-x;
-    background-image: url("./img/bg.png");
+    filter: blur(2px);
+    background-color: #333;
+    background-repeat: repeat;
+    background-size: cover;
+    background-image: url("./img/bg-1.png");
   }
 </style>

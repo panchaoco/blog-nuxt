@@ -39,8 +39,7 @@
 </template>
 
 <script>
-  import axios from '../../utils/axios'
-  import { mapState } from 'vuex';
+  import { mapState } from 'vuex'
   export default {
     name: "RightAside",
     data() {

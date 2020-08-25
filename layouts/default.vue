@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <!--        <blog-canvas key="bg"></blog-canvas>-->
+  <div class="weather snow">
+            <blog-canvas key="bg"></blog-canvas>
     <blog-header-top class="app-header"></blog-header-top>
     <div class="nuxt-view" ref="nuxtWrapper">
       <div class="left-container" v-if="showLeft">
