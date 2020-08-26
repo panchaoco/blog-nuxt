@@ -10,9 +10,9 @@
       </p>
       <textarea v-model="commentData.content" name="" id="" rows="8"></textarea>
     </div>
-    <div v-if="userInfo" class="avatar-container">
+    <div class="avatar-container">
       <div class="user-avatar">
-        <img v-lazy="userInfo.avatar" alt="">
+        <img v-lazy="userInfo ? userInfo.avatar : ''" alt="">
       </div>
     </div>
     <div class="comment-btn">
