@@ -9,7 +9,6 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   config => {
-    console.log('process.browser', process.browser)
     if (process.browser && window.localStorage.getItem('token')) {
       config.headers.Authorization = `Bearer ${window.localStorage.getItem('token')}`
     }

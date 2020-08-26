@@ -1,7 +1,7 @@
 <template>
 
   <blog-wrapper :aside-nav="false">
-    <div slot="middle">
+    <div slot="middle" style="width: 100%">
       <slide :banners="banners"></slide>
       <blog-home-rec :articleList="articleList" />
     </div>

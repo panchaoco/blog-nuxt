@@ -49,7 +49,7 @@
               </div>
             </div>
           </template>
-          <p class="not-comment">一血还在</p>
+          <p class="not-comment" v-else>一血还在</p>
         </div>
         <blog-comment :replayUser="replayUser" @clearReplay="replayUser = null"></blog-comment>
       </div>

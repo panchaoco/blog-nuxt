@@ -1,15 +1,19 @@
 <template>
   <div class="submit-comment">
     <p class="nickname-wrapper" v-if="userInfo">
-      <span>
-        宇宙通用昵称：{{userInfo.nickname}}
-      </span>
+      <span class="iconfont icon-mine_fill"></span>
+      <span> 我自己 : {{userInfo.nickname}}</span>
     </p>
     <div class="comment-wrapper">
       <p class="replay" v-if="replayUser">
         # <strong>{{replayUser.user.nickname}}</strong> #
       </p>
       <textarea v-model="commentData.content" name="" id="" rows="8"></textarea>
+    </div>
+    <div v-if="userInfo" class="avatar-container">
+      <div class="user-avatar">
+        <img v-lazy="userInfo.avatar" alt="">
+      </div>
     </div>
     <div class="comment-btn">
       <button class="submit-btn" @click.prevent.stop="submit">评论</button>
@@ -68,14 +72,19 @@
 <style lang="less" scoped>
   .submit-comment {
     margin-top: 10px;
-    background-color: #fff;
-    padding: 10px;
+    position: relative;
+    padding-left: 40px;
     .nickname-wrapper {
       color: #ffffff;
       line-height: 30px;
       height: 30px;
       background-color: #24282d;
       padding-left: 10px;
+      display: flex;
+      align-items: center;
+      .iconfont {
+        font-size: 18px;
+      }
       span {
         font-size: 12px;
         border-radius: 3px;
@@ -108,7 +117,6 @@
       }
     }
     .comment-wrapper {
-      background-color: #cfcfcf;
       font-size: 14px;
       .replay {
         border-bottom: 1px solid #acacac;
@@ -120,6 +128,30 @@
         padding: 10px;
         min-height: 140px;
         resize: none;
+        display: block;
+        margin-right: 0;
+        border: 1px solid #cfcfcf;
+        padding-left: 50px;
+      }
+
+    }
+    .avatar-container {
+      width: 80px;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      margin-top: -40px;
+      text-align: center;
+      background-color: #ffffff;
+      .user-avatar {
+        border: 2px solid #ffffff;
+        width: 80px;
+        height: 80px;
+        img {
+          width: 76px;
+          height: 76px;
+          display: block;
+        }
       }
     }
     .comment-btn {

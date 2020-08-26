@@ -34,6 +34,7 @@
     "internal-ip": "^6.1.0",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "vuex": "^3.5.1"
   }
 }

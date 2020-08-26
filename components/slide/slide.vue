@@ -77,6 +77,7 @@
     overflow: hidden;
     position: relative;
     z-index: 2;
+    width: 100%;
   }
   .music-slider {
     margin-bottom: 10px;
