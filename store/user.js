@@ -1,4 +1,4 @@
-import { getUserInfo } from '@/api/user'
+import request from '@/utils/axios'
 
 export const state = () => {
   return {
@@ -15,7 +15,7 @@ export const mutations = {
 
 export const actions = {
   async getUserInfo({ commit }) {
-    const res = await getUserInfo()
+    const res = await request('/v1/api/user_info')
     if (res.state === 0) {
       commit('updateUserInfo', res.data)
     }

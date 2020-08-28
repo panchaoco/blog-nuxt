@@ -24,9 +24,6 @@
 <script>
   import { mapState } from 'vuex'
   const COMMENT_DATA = {
-    nickname: '',
-    email: '',
-    link: '',
     content: ''
   }
   export default {

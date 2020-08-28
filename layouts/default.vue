@@ -1,5 +1,5 @@
 <template>
-  <div class="weather snow">
+  <div>
     <blog-canvas key="bg"></blog-canvas>
     <blog-header-top class="app-header"></blog-header-top>
     <div class="nuxt-view" ref="nuxtWrapper">
