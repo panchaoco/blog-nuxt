@@ -2,7 +2,7 @@
 
   <blog-wrapper :aside-nav="false">
     <div slot="middle" style="width: 100%">
-      <slide :banners="banners"></slide>
+      <!-- <slide :banners="banners"></slide> -->
       <blog-home-rec :articleList="articleList" />
     </div>
     <blog-right-aside slot="right"></blog-right-aside>

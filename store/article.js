@@ -110,7 +110,7 @@ export const actions = {
 function handleArticleNode(res) {
   const dataSource = [];
   res.data.map(item => {
-    const updateTime = new Date(item.updated_at.replace(/-/g,'/'));
+    const updateTime = new Date(item.created_at.replace(/-/g,'/'));
     const year = updateTime.getFullYear();
     const month = updateTime.getMonth() + 1 < 10 ? `0${updateTime.getMonth() + 1}` : updateTime.getMonth() + 1;
     const date = updateTime.getDate() < 10 ? `0${updateTime.getDate()}` : updateTime.getDate();

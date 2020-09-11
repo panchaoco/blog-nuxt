@@ -1,72 +1,76 @@
 <template>
-  <form class="form">
-    <h1>Public</h1>
-    <span class="iconfont icon-close" @click="$emit('close')"></span>
-    <div class="login-type">
-      <transition name="left">
-        <div v-if="phone">
-          <div class="item" key="1">
-            <span class="iconfont icon-down"></span>
-            <span class="area">+86</span>
-            <input class="phone" type="text" placeholder="请输入您的手机号" />
-            <span class="label" @click="phone = false">密码登录</span>
-          </div>
-          <div class="item" key="2" v-if="phone">
-            <input type="text" placeholder="请输入验证码" />
-            <span class="label">获取验证码</span>
-          </div>
-        </div>
-      </transition>
-      <transition name="right">
-        <div v-if="!phone">
-          <div class="item" key="3">
-            <span class="iconfont icon-down"></span>
-            <span class="area">+86</span>
-            <input v-model="formData.phone" class="phone" type="text" placeholder="请输入您的手机号" />
-            <span class="label" @click="codeLogin">验证码登录</span>
-          </div>
-          <div class="item" key="4">
-            <input v-model="formData.password" type="password" placeholder="请输入密码" />
-          </div>
-          <div class="item ok-password" key="5" :class="{height: register}">
-            <input v-model="formData.ok_password" type="password" placeholder="请确认密码" />
-          </div>
-          <div class="item ok-password" key="6" :class="{height: register}">
-            <input v-model="formData.nickname" type="text" placeholder="请输入昵称" />
-          </div>
-          <div class="to-register">
-            <div v-if="!register">
-              <span>没有账号？</span>
-              <span @click="toRegister">点击注册</span>
+  <div>
+    <form class="form">
+      <h1>Public</h1>
+      <span class="iconfont icon-close" @click="$emit('close')"></span>
+      <div class="login-type">
+        <transition name="left">
+          <div v-if="phone">
+            <div class="item" key="1">
+              <span class="iconfont icon-down"></span>
+              <span class="area">+86</span>
+              <input class="phone" v-model="formData.phone" type="text" placeholder="请输入您的手机号" />
+              <span class="label" @click="phone = false">密码登录</span>
             </div>
-            <span @click="toLogin" v-else>密码登录</span>
+            <div class="item" key="2" v-if="phone">
+              <input type="text" v-model="formData.code" placeholder="请输入验证码" />
+              <span class="label" @click="getCode" :class="{disabled: codeFlag}">{{ codeFlag ? `${downCount}秒后重新获取` : '获取验证码' }}</span>
+            </div>
           </div>
-        </div>
-      </transition>
-    </div>
-    <div class="login-btn" type="button" v-show="!register" @click.prevent="gotoLogin">点击登录</div>
-    <div class="login-btn" type="button" v-show="register" @click.prevent="gotoRegister">点击注册</div>
-    <div class="other-btn">
-      <div class="btn wechat">
-        <span class="iconfont icon-wechat"></span>
-        <button>微信登录</button>
+        </transition>
+        <transition name="right">
+          <div v-if="!phone">
+            <div class="item" key="3">
+              <span class="iconfont icon-down"></span>
+              <span class="area">+86</span>
+              <input v-model="formData.phone" class="phone" type="text" placeholder="请输入您的手机号" />
+              <span class="label" @click="codeLogin">验证码登录</span>
+            </div>
+            <div class="item" key="4">
+              <input v-model="formData.password" type="password" placeholder="请输入密码" />
+            </div>
+            <div class="item ok-password" key="5" :class="{height: register}">
+              <input v-model="formData.ok_password" type="password" placeholder="请确认密码" />
+            </div>
+            <div class="item ok-password" key="6" :class="{height: register}">
+              <input v-model="formData.nickname" type="text" placeholder="请输入昵称" />
+            </div>
+            <div class="to-register">
+              <div v-if="!register">
+                <span>没有账号？</span>
+                <span @click="toRegister">点击注册</span>
+              </div>
+              <span @click="toLogin" v-else>密码登录</span>
+            </div>
+          </div>
+        </transition>
       </div>
-      <div class="btn github">
-        <span class="iconfont icon-github"></span>
-        <button>GitHub</button>
+      <div class="login-btn" type="button" v-show="!register" @click.prevent="gotoLogin">点击登录</div>
+      <div class="login-btn" type="button" v-show="register" @click.prevent="gotoRegister">点击注册</div>
+      <div class="other-btn">
+        <button class="btn github">
+          <span class="iconfont icon-github"></span>
+          <span type="button">GitHub</span>
+        </button>
       </div>
-    </div>
-    <div class="rule">
-      <span>登录即</span>
-      <p>同意Public站用户协议与隐私条款</p>
-    </div>
-  </form>
+      <div class="rule">
+        <span>登录即</span>
+        <p>同意Public站用户协议与隐私条款</p>
+      </div>
+    </form>
+  </div>
 </template>
 
 <script>
   import axios from '../../utils/axios'
+  import MessageToast from '@/components/message/toast'
+  import { getPhoneCode } from '@/api/user'
+
   export default {
     name: 'Login',
+    components: {
+      MessageToast
+    },
     data() {
       return {
         phone: true,
@@ -77,7 +81,11 @@
           ok_password: '',
           username: '',
           nickname: '',
-        }
+        },
+        downCount: 60,
+        codeFlag: false,
+        tip: '验证码发送成功',
+        visible: false
       }
     },
     methods: {
@@ -106,16 +114,68 @@
         }
       },
       async gotoLogin() {
-        const res = await axios( '/v1/api/login', {
-          method: 'post',
-          body: {
-            username: this.formData.phone,
-            password: this.formData.password
-          }
-        })
+        let res
+        if (this.phone) {
+          res = await axios( '/v1/api/code_login', {
+            method: 'post',
+            body: {
+              phone: this.formData.phone,
+              code: this.formData.code
+            }
+          })
+        } else {
+          res = await axios( '/v1/api/login', {
+            method: 'post',
+            body: {
+              username: this.formData.phone,
+              password: this.formData.password
+            }
+          })
+        }
+
         if (res.state === 0) {
           window.localStorage.setItem('token', res.data.token)
           this.$emit('close')
+        }
+      },
+      handleCount() {
+        this.codeFlag = true
+        let timer = null
+        let _this = this
+        const down = function down () {
+          timer = setTimeout(() => {
+            _this.downCount--
+            if (_this.downCount > 0) {
+              down()
+            } else {
+              _this.codeFlag = false
+              _this.downCount = 60
+              clearTimeout(timer)
+              timer = null
+            }
+
+          }, 1000)
+        }
+        down()
+      },
+      async getCode() {
+        if (!this.formData.phone) {
+          return this.$message({
+            type: 'error',
+            text: '请收入手机号'
+          })
+        }
+
+        if (this.codeFlag) return
+
+        this.handleCount()
+        const res = await getPhoneCode({
+          phone: this.formData.phone
+        })
+        if (res.state === 0) {
+          this.$message({
+            text: '发送验证码成功'
+          })
         }
       }
     }
@@ -176,6 +236,9 @@
         color: #1d83f5;
         font-size: 13px;
         cursor: pointer;
+        &.disabled {
+          color: #b5b1b1;
+        }
       }
     }
     .login-btn {
@@ -208,11 +271,11 @@
         text-align: center;
         button {
           background-color: transparent;
-          height: 45px;
-          color: #666666;
         }
+        height: 45px;
+        color: #666666;
         &:nth-child(1) {
-          margin-right: 20px;
+          /*margin-right: 20px;*/
         }
         &.wechat {
           .iconfont {

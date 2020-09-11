@@ -29,11 +29,11 @@
         <div class="resume" v-html="resume"></div>
       </div>
 
-      <no-ssr>
+      <client-only>
         <h4 class="map-title">我的位置</h4>
         <el-amap vid="amapDemo"  :center="center" :map-manager="amapManager" :zoom="zoom" :events="events" class="vue-map">
         </el-amap>
-      </no-ssr>
+      </client-only>
     </div>
 
   </wrapper>

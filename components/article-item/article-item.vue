@@ -4,9 +4,9 @@
     <div class="hot-content">
       <ul v-if="!isFetching">
         <li v-for="(item, index) in articleList" :key="index">
-          <no-ssr>
+          <client-only>
             <skeleton-list></skeleton-list>
-          </no-ssr>
+          </client-only>
         </li>
       </ul>
       <ul class="article-item-wrapper" v-else>
@@ -14,7 +14,7 @@
           <div class="hot-item">
             <span class="tag" :class="{original: !!item.original}">{{ item.original ? '原创' : '转载' }}</span>
             <div class="img-box">
-              <img :src="item.img_src || require('../../assets/img/default.jpeg')" alt="">
+              <img v-lazy="item.img_src" :alt="item.title" :title="item.title">
             </div>
             <div class="content">
               <div class="top">
@@ -48,7 +48,7 @@
             </div>
 
           </div>
-          <no-ssr>
+          <client-only>
             <ul class="comments" :class="{open: item.openComment}" v-if="item.comments">
               <li class="comment-item" v-for="(cItem, index) in item.comments.slice(0, 2)" :key="index">
                 <div class="avatar-img">
@@ -64,7 +64,7 @@
                 </div>
               </li>
             </ul>
-          </no-ssr>
+          </client-only>
         </li>
       </ul>
     </div>

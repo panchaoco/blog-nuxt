@@ -38,6 +38,7 @@ export default {
   plugins: [
     { src: '~/plugins/swiper', mode: 'client' },
     { src: '~plugins/jquery-3.5.0.min.js', mode: 'client', ssr: false },
+    { src: '~plugins/message', mode: 'client', ssr: false },
     { src: '~/plugins/vue-components', mode: 'client' },
     '@/plugins/vue-map',
     '~/plugins/vue-lazyload'

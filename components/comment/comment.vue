@@ -1,9 +1,5 @@
 <template>
   <div class="submit-comment">
-    <p class="nickname-wrapper" v-if="userInfo">
-      <span class="iconfont icon-mine_fill"></span>
-      <span> 我自己 : {{userInfo.nickname}}</span>
-    </p>
     <div class="comment-wrapper">
       <p class="replay" v-if="replayUser">
         # <strong>{{replayUser.user.nickname}}</strong> #
@@ -11,9 +7,6 @@
       <textarea v-model="commentData.content" name="" id="" rows="8"></textarea>
     </div>
     <div class="avatar-container">
-      <div class="user-avatar">
-        <img v-lazy="userInfo ? userInfo.avatar : ''" alt="">
-      </div>
     </div>
     <div class="comment-btn">
       <button class="submit-btn" @click.prevent.stop="submit">评论</button>
@@ -70,7 +63,6 @@
   .submit-comment {
     margin-top: 10px;
     position: relative;
-    padding-left: 40px;
     .nickname-wrapper {
       color: #ffffff;
       line-height: 30px;
@@ -121,14 +113,12 @@
       }
       textarea {
         width: 100%;
-        background-color: #cfcfcf;
+        background-color: #282c34;
         padding: 10px;
-        min-height: 140px;
         resize: none;
         display: block;
         margin-right: 0;
-        border: 1px solid #cfcfcf;
-        padding-left: 50px;
+        color: #abb2bf;
       }
 
     }
@@ -152,20 +142,34 @@
       }
     }
     .comment-btn {
-      height: 28px;
+      height: 35px;
       background-color: #bcbcbc;
       .submit-btn {
-        background-color: #bcbcbc;
-        border-left: 1px solid #ddd;
+        background-color: #fd4801;
         float: right;
         display: block;
-        width: 60px;
-        height: 28px;
-        line-height: 28px;
+        width: 80px;
+        height: 35px;
+        line-height: 35px;
         text-align: center;
         outline: none;
         cursor: pointer;
+        color: #ffffff;
+        font-weight: 600;
+        animation: btnColor 1s linear infinite alternate;
       }
+    }
+  }
+
+  @keyframes btnColor {
+    0% {
+      background-image: linear-gradient(to right, #ffaa00, #ff0000)
+    }
+    50% {
+      background-image: linear-gradient(to right, #437a9e, #0480e0)
+    }
+    100% {
+      background-image: linear-gradient(to right, #9500ff, #ff00a1)
     }
   }
 </style>

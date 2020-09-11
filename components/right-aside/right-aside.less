@@ -4,6 +4,8 @@
   flex: 0 0 260px;
   width: 260px;
   margin-left: 10px;
+  position: sticky;
+  top: 0px;
   .blog-user {
     background-color: #fff;
     border-radius: 3px;
@@ -75,7 +77,7 @@
       li {
         //font-family: "SFMono-Regular", Consolas, "Source Code Pro", "Liberation Mono", Menlo, Courier, monospace;;
         padding-left: 10px;
-        font-size: 12px;
+        font-size: 13px;
         height: 38px;
         line-height: 38px;
         perspective: 1000px;
@@ -106,9 +108,10 @@
             transition: all .2s;
           }
           &:hover {
-            color: #333;
+            opacity: 0.8;
             span:nth-child(2) {
-              padding-left: 2px;
+              color: #000;
+              text-decoration: underline;
             }
           }
         }
@@ -208,7 +211,7 @@
     cursor: pointer;
     align-items: center;
     padding-right: 10px;
-    font-family: SpecialSymbol, DINRegular, -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft YaHei", sans-serif;;
+    font-family: SpecialSymbol, DINRegular, -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft YaHei", sans-serif;
     color: #666666;
     span {
       &.icon {

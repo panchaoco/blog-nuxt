@@ -6,3 +6,11 @@ export function getUserInfo() {
     method: 'get'
   })
 }
+
+export function getPhoneCode(data) {
+  return request({
+    url: '/v1/api/code',
+    method: 'post',
+    data
+  })
+}
