@@ -13,6 +13,9 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: '//at.alicdn.com/t/font_1114196_w989p7lpsrr.css' }
+    ],
+    script: [
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js' }
     ]
   },
 
@@ -37,7 +40,7 @@ export default {
   */
   plugins: [
     { src: '~/plugins/swiper', mode: 'client' },
-    { src: '~plugins/jquery-3.5.0.min.js', mode: 'client', ssr: false },
+    // { src: '~plugins/jquery-3.5.0.min.js', mode: 'client', ssr: false },
     { src: '~plugins/message', mode: 'client', ssr: false },
     { src: '~/plugins/vue-components', mode: 'client' },
     '@/plugins/vue-map',

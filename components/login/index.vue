@@ -48,11 +48,15 @@
       <div class="login-btn" type="button" v-show="!register" @click.prevent="gotoLogin">点击登录</div>
       <div class="login-btn" type="button" v-show="register" @click.prevent="gotoRegister">点击注册</div>
       <div class="other-btn">
-        <button class="btn github">
+        <a href="javascript:;" @click="githubLogin" class="btn github" type="button">
           <span class="iconfont icon-github"></span>
           <span type="button">GitHub</span>
-        </button>
+        </a>
       </div>
+      <qrcode v-if="qrcodeData" :value="qrcodeData.qrCodeReturnUrl"></qrcode>
+      <template v-if="qrcodeData">
+        {{ qrcodeData.qrCodeReturnUrl }}
+      </template>
       <div class="rule">
         <span>登录即</span>
         <p>同意Public站用户协议与隐私条款</p>
@@ -64,12 +68,14 @@
 <script>
   import axios from '../../utils/axios'
   import MessageToast from '@/components/message/toast'
-  import { getPhoneCode } from '@/api/user'
+  import Qrcode from '@chenfengyuan/vue-qrcode';
+  import { getPhoneCode, wechatLogin, githubUserInfo } from '@/api/user'
 
   export default {
     name: 'Login',
     components: {
-      MessageToast
+      MessageToast,
+      Qrcode
     },
     data() {
       return {
@@ -85,7 +91,8 @@
         downCount: 60,
         codeFlag: false,
         tip: '验证码发送成功',
-        visible: false
+        visible: false,
+        qrcodeData: null
       }
     },
     methods: {
@@ -93,8 +100,15 @@
         this.register = true;
       },
       codeLogin() {
-        this.register = false
-        this.phone = true
+        if (this.register) {
+          this.register = false;
+          setTimeout(() => {
+            this.phone = true;
+          }, 300)
+        } else {
+          this.phone = true;
+        }
+
       },
       toLogin() {
         this.register = false
@@ -177,6 +191,20 @@
             text: '发送验证码成功'
           })
         }
+      },
+      async githubLogin(e) {
+        e.preventDefault();
+        console.log('login')
+        const res = await wechatLogin({
+          path: window.location.href
+        });
+        if (res.state === 0 && res.data) {
+          this.qrcodeData = res.data
+          console.log('res.data', res.data)
+          // window.location.href = res.data
+        }
+      },
+      async getUserInfo(data = null) {
       }
     }
   }
@@ -269,6 +297,9 @@
         background-color: #ffffff;
         box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         button {
           background-color: transparent;
         }
@@ -303,6 +334,9 @@
       }
     }
   }
+  .icon-github {
+    margin-right: 5px;
+  }
   .left-enter-active, .left-leave-active {
     transition: all .6s;
   }
@@ -322,5 +356,6 @@
   }
   .height-enter, .height-leave-to {
     height: 0;
+    opacity: 0;
   }
 </style>

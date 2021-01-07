@@ -31,7 +31,7 @@
           <template v-if="commentList.length > 0">
             <div class="comment-item" v-for="(item, index) in commentList" :key="index">
               <div class="avatar">
-                <img src="~assets/img/default.jpeg" alt="">
+                <img v-lazy="item.user.avatar" alt="">
               </div>
               <div class="content">
                 <div class="user">

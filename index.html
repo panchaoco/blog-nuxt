@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <title>Title</title>
+  <style>
+    * {
+        font-size: 30px;
+        padding: 0;
+        margin: 0;
+    }
+    body, html {
+        height: 100%;
+        overflow: hidden;
+    }
+    .div {
+        height: 100vh;
+        overflow-y: hidden;
+    }
+    .div .div1 {
+        height: 200px;
+        background-color: #4ac79a;
+    }
+    .div .div2 {
+        height: 100vh;
+        overflow-y: hidden;
+    }
+    .div2 .item {
+        height: 50px;
+    }
+    .item:nth-child(odd) {
+        background-color: #6a8db4;
+    }
+    .item:nth-child(even) {
+        background-color: #a35c89;
+    }
+  </style>
+</head>
+<body>
+<div class="div">
+  <div>
+    <div class="div1">
+      1
+    </div>
+    <div class="div2">
+      <div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script src="https://unpkg.com/better-scroll@latest/dist/better-scroll.js"></script>
+<script>
+  // document.querySelector('.div').addEventListener('scroll', () => {
+  //   const top = document.querySelector('.div').scrollTop;
+  //   console.log('top', top);
+  //   if (top >= 180) {
+  //     console.log('到虚拟滚动了')
+  //     document.querySelector('.div2').style.overflowY = 'auto'
+  //   }
+  // });
+  // document.querySelector('.div2').addEventListener('scroll', () => {
+  //   const top = document.querySelector('.div2').scrollTop;
+  //   if (top === 0) {
+  //     console.log('回到正常滚动')
+  //   }
+  // });
+  let wrapper = document.querySelector('.div')
+  let bs = BetterScroll.createBScroll(wrapper, {})
+  let wrapper2 = document.querySelector('.div2')
+  let bs2 = BetterScroll.createBScroll(wrapper, {})
+</script>
+</html>
